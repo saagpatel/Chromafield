@@ -1,0 +1,45 @@
+{
+	"id": "00000001-0000-0000-0000-000000000003",
+	"name": "Solar Wind",
+	"createdAt": "2026-01-01T00:00:02Z",
+	"behavior": 0,
+	"paletteIndex": 0,
+	"nodes": [
+		{
+			"id": "10000003-0001-0000-0000-000000000001",
+			"position": [
+				0.2,
+				0.5
+			],
+			"strength": 0.5,
+			"direction": 0,
+			"type": 0,
+			"radius": 0.3,
+			"falloff": 1.5
+		},
+		{
+			"id": "10000003-0002-0000-0000-000000000001",
+			"position": [
+				0.8,
+				0.5
+			],
+			"strength": 0.5,
+			"direction": 0,
+			"type": 0,
+			"radius": 0.3,
+			"falloff": 1.5
+		},
+		{
+			"id": "10000003-0003-0000-0000-000000000001",
+			"position": [
+				0.5,
+				0.5
+			],
+			"strength": 0.4,
+			"direction": 0,
+			"type": 1,
+			"radius": 0.3,
+			"falloff": 1.5
+		}
+	]
+}
