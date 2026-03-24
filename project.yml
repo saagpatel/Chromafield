@@ -1,0 +1,47 @@
+name: Chromafield
+options:
+  bundleIdPrefix: com.chromafield
+  deploymentTarget:
+    iOS: "17.0"
+  createIntermediateGroups: true
+  generateEmptyDirectories: true
+
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    SWIFT_STRICT_CONCURRENCY: complete
+    TARGETED_DEVICE_FAMILY: "1,2"
+
+targets:
+  Chromafield:
+    type: application
+    platform: iOS
+    sources:
+      - path: Chromafield
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_UILaunchScreen_Generation: true
+        INFOPLIST_KEY_UIApplicationSceneManifest_Generation: true
+        INFOPLIST_KEY_UISupportedInterfaceOrientations: "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortraitUpsideDown"
+        SWIFT_OBJC_BRIDGING_HEADER: Chromafield/Support/Chromafield-Bridging-Header.h
+        HEADER_SEARCH_PATHS: "$(SRCROOT)/Chromafield/Metal/Shaders"
+        MTL_HEADER_SEARCH_PATHS: "$(SRCROOT)/Chromafield/Metal/Shaders"
+        PRODUCT_BUNDLE_IDENTIFIER: com.chromafield.app
+        INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription: "Chromafield saves your particle art to your photo library."
+    scheme:
+      testTargets:
+        - ChromafieldTests
+
+  ChromafieldTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - ChromafieldTests
+    dependencies:
+      - target: Chromafield
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+        PRODUCT_BUNDLE_IDENTIFIER: com.chromafield.app.tests
