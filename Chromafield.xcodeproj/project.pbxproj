@@ -1,0 +1,704 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		01E110DB7D754A41C8A7E9A2 /* CanvasContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5568CF9B721ED73C34AAEC56 /* CanvasContainerView.swift */; };
+		0EF5272E4591B052D9A69B04 /* InputMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAE899F506FD9A845D9D3F9 /* InputMapper.swift */; };
+		10CE833B81D3924F83BB5D34 /* MetalCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765E365ACD969E288F693B07 /* MetalCanvasView.swift */; };
+		174DADA1ACF4A0700458DDBF /* FieldNodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472EBC3891049691665E761D /* FieldNodeModel.swift */; };
+		18CE8022D4D17E4E7FA66D0F /* MetalEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770B27D2A2F00BE5CDD17566 /* MetalEngine.swift */; };
+		288110FB6ACA78006A33BC6A /* preset-nebula.json in Resources */ = {isa = PBXBuildFile; fileRef = D8C1DFCC7ADD6F59962665DB /* preset-nebula.json */; };
+		2B51CEB2222C90462D1181D2 /* FieldManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9F2976841F026F2488FAE4 /* FieldManager.swift */; };
+		2BC2CF06DB32340A48851838 /* ExportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F436F37EA2962E68CD441B41 /* ExportTests.swift */; };
+		2D3F189D6437ED60471BC07F /* preset-gold-rush.json in Resources */ = {isa = PBXBuildFile; fileRef = A1A2D170237EA7FF55E84E1C /* preset-gold-rush.json */; };
+		2E3B94D14CDF74511CFF0715 /* PaletteSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3DF2CF5C24EC3E84339B16 /* PaletteSelector.swift */; };
+		3038F29FAF12A3ADA4BD41A8 /* BehaviorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F096DD3C51FE446152689B /* BehaviorPicker.swift */; };
+		446C1D35878F81B575A0B664 /* VideoExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B179F11602A0649F915142EC /* VideoExporter.swift */; };
+		46E97A6E0196464F22801562 /* PresetDecodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50402429310F7E3ECF78251F /* PresetDecodeTests.swift */; };
+		51F91E9A8A426F0316149904 /* ColorPaletteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5762DEB4D31BDA624ADFC62 /* ColorPaletteTests.swift */; };
+		55B0AD2A0621131DD3434100 /* FrameBudgetMonitorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79BC2107247DCD29C8A0815 /* FrameBudgetMonitorTests.swift */; };
+		5C9B2948E0D31E101EB3C6D0 /* FieldNodeModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F028D789D743A2C0A16BB67 /* FieldNodeModelTests.swift */; };
+		5D35F405B97473FE04764FEA /* PersistenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA63BD1B5E2412F0B6DBE50A /* PersistenceTests.swift */; };
+		6A28096FC02F1D8662DC1E56 /* OffscreenRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9FE4C8EB6B5B855176CF83 /* OffscreenRenderer.swift */; };
+		6E09C011FD0C82AA05118B4F /* ExportControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = C307BC76487A9773D70C0AB9 /* ExportControls.swift */; };
+		7F83A202633926DA2F01DC1A /* BehaviorSimulationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB69D652C500FB76EA5A7B2 /* BehaviorSimulationTests.swift */; };
+		84AD131B842762CE2FC2D4C5 /* SimulationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123623743C442858B75B30CB /* SimulationTests.swift */; };
+		86190218FEC9ADD8543A76C7 /* PresetGallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D0827C7E850084186E374A /* PresetGallery.swift */; };
+		8E52C15A08CB54C3317F61D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3D2D7DC56A18E24D2DCD7D7 /* Assets.xcassets */; };
+		9328023CB2F6BFDF8D269DF1 /* preset-crystal-web.json in Resources */ = {isa = PBXBuildFile; fileRef = 9855BD5161A283B3AF41AA5E /* preset-crystal-web.json */; };
+		93D779A5BDAAAACCCF4F7CB6 /* SimulationConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C652413426E9C35C7455887 /* SimulationConfig.swift */; };
+		96885A32405631A6949A86D9 /* RadialNodeMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4A14F75095AA145B820FDC /* RadialNodeMenu.swift */; };
+		9D4D9A737D696A630702976A /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = E9CA6F78764ADA291A497725 /* PrivacyInfo.xcprivacy */; };
+		A14E2F261165679C82B02795 /* ParticleBudget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE269C349ACF885EA61747D /* ParticleBudget.swift */; };
+		A4DE196E6D12211D6122AD48 /* FieldManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF77BCA30AD318307134B6C /* FieldManagerTests.swift */; };
+		AEAF6EE012F61812509E71E8 /* InputMapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2441CBDEF1C51B6ABC13C706 /* InputMapperTests.swift */; };
+		AF92524A3C4CBD68F64954B2 /* DeviceCapabilitiesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3112FA330026206AE5E9111B /* DeviceCapabilitiesTests.swift */; };
+		B7A347F66A37DC025E7609B7 /* AdaptiveQualityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D89B8C1CE56D68534545A04 /* AdaptiveQualityTests.swift */; };
+		BF36D20E6A6E665AC0D0098D /* FrameBudgetMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C3BA644127822B6DB89A98 /* FrameBudgetMonitor.swift */; };
+		C08AFEFDD6C8D6FCE86FB259 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BACDD0168C89C399643351A2 /* ContentView.swift */; };
+		CBFBAA79EBF0EB6DDBF629CC /* ParticleCompute.metal in Sources */ = {isa = PBXBuildFile; fileRef = 650A720318FA118CEBCC1202 /* ParticleCompute.metal */; };
+		CEB5B80A30BC62DBE07B9BD2 /* OffscreenRendererTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1613D17272D09ADA63A1191 /* OffscreenRendererTests.swift */; };
+		D41D5658AC6AF7C856ECC582 /* FieldConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B19B5AC9CC318272989439 /* FieldConfig.swift */; };
+		D462377BA27F5D22D50639A3 /* preset-void-dance.json in Resources */ = {isa = PBXBuildFile; fileRef = 6D2A2D2D916B4060D73AF678 /* preset-void-dance.json */; };
+		D499D9BD1C3C4ADE5DF90678 /* ImageExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32F295BE144BFDCAA6EA89A /* ImageExporter.swift */; };
+		D6C6D44E22CC720DD0621B3F /* ParticleRender.metal in Sources */ = {isa = PBXBuildFile; fileRef = 05FEDECF7BA29BDE813C646E /* ParticleRender.metal */; };
+		DB5B7A17082A5A93E3856708 /* ParticleBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964B83E6066E5ED619001D8C /* ParticleBuffer.swift */; };
+		DF900E916C19F8A52AFB9120 /* preset-solar-wind.json in Resources */ = {isa = PBXBuildFile; fileRef = 1F9DED7D6DE276778346A2CF /* preset-solar-wind.json */; };
+		E19B4F5DDBF22869DAB68451 /* GestureCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258BEDDF8B35EC0E4D4D4157 /* GestureCoordinator.swift */; };
+		E21F015572BE5F681DD248F4 /* ParticleBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E3B7ACEB07AB519E184785 /* ParticleBehavior.swift */; };
+		E323DAFE288D09FE915A19AA /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB5284B9C599CC6D72AC6C1 /* ColorPalette.swift */; };
+		E4CCCF2F4043385ED3C8D2BF /* PencilInputHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54616621990332E7E680747F /* PencilInputHandler.swift */; };
+		EB7AA9FE4D753D071A573881 /* ChromafieldApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790E1BCE96B952389963F7F0 /* ChromafieldApp.swift */; };
+		F825442884D9D6E5070CEF94 /* preset-toxic-storm.json in Resources */ = {isa = PBXBuildFile; fileRef = 307C4C6B51A0B2EE98E25605 /* preset-toxic-storm.json */; };
+		F86FF0C43279985B9F3DF78D /* DeviceCapabilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A00079F066FD42541D1F514 /* DeviceCapabilities.swift */; };
+		FD0D4AFAB9D52B3D731C3A56 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F2341CCEF6BDA9957FC8EA /* PersistenceManager.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		71BCEF79F996088F91F0B099 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2B24F81CF39C63ECF5570F97 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DC9835FF16D218078CBAAB5E;
+			remoteInfo = Chromafield;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		05FEDECF7BA29BDE813C646E /* ParticleRender.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = ParticleRender.metal; sourceTree = "<group>"; };
+		099809740DC8DC397D6AD5F0 /* Chromafield-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Chromafield-Bridging-Header.h"; sourceTree = "<group>"; };
+		0B4A14F75095AA145B820FDC /* RadialNodeMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadialNodeMenu.swift; sourceTree = "<group>"; };
+		123623743C442858B75B30CB /* SimulationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationTests.swift; sourceTree = "<group>"; };
+		17D0827C7E850084186E374A /* PresetGallery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetGallery.swift; sourceTree = "<group>"; };
+		1F9DED7D6DE276778346A2CF /* preset-solar-wind.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "preset-solar-wind.json"; sourceTree = "<group>"; };
+		2441CBDEF1C51B6ABC13C706 /* InputMapperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputMapperTests.swift; sourceTree = "<group>"; };
+		258BEDDF8B35EC0E4D4D4157 /* GestureCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureCoordinator.swift; sourceTree = "<group>"; };
+		2A00079F066FD42541D1F514 /* DeviceCapabilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceCapabilities.swift; sourceTree = "<group>"; };
+		2C3DF2CF5C24EC3E84339B16 /* PaletteSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteSelector.swift; sourceTree = "<group>"; };
+		307C4C6B51A0B2EE98E25605 /* preset-toxic-storm.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "preset-toxic-storm.json"; sourceTree = "<group>"; };
+		3112FA330026206AE5E9111B /* DeviceCapabilitiesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceCapabilitiesTests.swift; sourceTree = "<group>"; };
+		40F096DD3C51FE446152689B /* BehaviorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BehaviorPicker.swift; sourceTree = "<group>"; };
+		472EBC3891049691665E761D /* FieldNodeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldNodeModel.swift; sourceTree = "<group>"; };
+		4C652413426E9C35C7455887 /* SimulationConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationConfig.swift; sourceTree = "<group>"; };
+		50402429310F7E3ECF78251F /* PresetDecodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetDecodeTests.swift; sourceTree = "<group>"; };
+		54616621990332E7E680747F /* PencilInputHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PencilInputHandler.swift; sourceTree = "<group>"; };
+		5568CF9B721ED73C34AAEC56 /* CanvasContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasContainerView.swift; sourceTree = "<group>"; };
+		59C3BA644127822B6DB89A98 /* FrameBudgetMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameBudgetMonitor.swift; sourceTree = "<group>"; };
+		5D89B8C1CE56D68534545A04 /* AdaptiveQualityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptiveQualityTests.swift; sourceTree = "<group>"; };
+		650A720318FA118CEBCC1202 /* ParticleCompute.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = ParticleCompute.metal; sourceTree = "<group>"; };
+		6D2A2D2D916B4060D73AF678 /* preset-void-dance.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "preset-void-dance.json"; sourceTree = "<group>"; };
+		6EE269C349ACF885EA61747D /* ParticleBudget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticleBudget.swift; sourceTree = "<group>"; };
+		765E365ACD969E288F693B07 /* MetalCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalCanvasView.swift; sourceTree = "<group>"; };
+		770B27D2A2F00BE5CDD17566 /* MetalEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalEngine.swift; sourceTree = "<group>"; };
+		790E1BCE96B952389963F7F0 /* ChromafieldApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChromafieldApp.swift; sourceTree = "<group>"; };
+		7B9F2976841F026F2488FAE4 /* FieldManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldManager.swift; sourceTree = "<group>"; };
+		84F2341CCEF6BDA9957FC8EA /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
+		8CF77BCA30AD318307134B6C /* FieldManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldManagerTests.swift; sourceTree = "<group>"; };
+		94B19B5AC9CC318272989439 /* FieldConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldConfig.swift; sourceTree = "<group>"; };
+		94E3B7ACEB07AB519E184785 /* ParticleBehavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticleBehavior.swift; sourceTree = "<group>"; };
+		964B83E6066E5ED619001D8C /* ParticleBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticleBuffer.swift; sourceTree = "<group>"; };
+		9855BD5161A283B3AF41AA5E /* preset-crystal-web.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "preset-crystal-web.json"; sourceTree = "<group>"; };
+		9F028D789D743A2C0A16BB67 /* FieldNodeModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldNodeModelTests.swift; sourceTree = "<group>"; };
+		9FB69D652C500FB76EA5A7B2 /* BehaviorSimulationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BehaviorSimulationTests.swift; sourceTree = "<group>"; };
+		A1A2D170237EA7FF55E84E1C /* preset-gold-rush.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "preset-gold-rush.json"; sourceTree = "<group>"; };
+		A3D2D7DC56A18E24D2DCD7D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A79BC2107247DCD29C8A0815 /* FrameBudgetMonitorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameBudgetMonitorTests.swift; sourceTree = "<group>"; };
+		AA63BD1B5E2412F0B6DBE50A /* PersistenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceTests.swift; sourceTree = "<group>"; };
+		B179F11602A0649F915142EC /* VideoExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoExporter.swift; sourceTree = "<group>"; };
+		BA9FE4C8EB6B5B855176CF83 /* OffscreenRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffscreenRenderer.swift; sourceTree = "<group>"; };
+		BACDD0168C89C399643351A2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		C1613D17272D09ADA63A1191 /* OffscreenRendererTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffscreenRendererTests.swift; sourceTree = "<group>"; };
+		C307BC76487A9773D70C0AB9 /* ExportControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportControls.swift; sourceTree = "<group>"; };
+		CBAE899F506FD9A845D9D3F9 /* InputMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputMapper.swift; sourceTree = "<group>"; };
+		D32F295BE144BFDCAA6EA89A /* ImageExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExporter.swift; sourceTree = "<group>"; };
+		D8C1DFCC7ADD6F59962665DB /* preset-nebula.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "preset-nebula.json"; sourceTree = "<group>"; };
+		D9509AF53953723A32FB39B2 /* SharedTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SharedTypes.h; sourceTree = "<group>"; };
+		DD78A9E5D65AC209C3EE62E8 /* Chromafield.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Chromafield.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E9CA6F78764ADA291A497725 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		EEB5284B9C599CC6D72AC6C1 /* ColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
+		F436F37EA2962E68CD441B41 /* ExportTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportTests.swift; sourceTree = "<group>"; };
+		F5762DEB4D31BDA624ADFC62 /* ColorPaletteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPaletteTests.swift; sourceTree = "<group>"; };
+		F782C8F058EF65640148E5F5 /* ChromafieldTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = ChromafieldTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		2999A2CE4D056C27F6A46404 /* Presets */ = {
+			isa = PBXGroup;
+			children = (
+				9855BD5161A283B3AF41AA5E /* preset-crystal-web.json */,
+				A1A2D170237EA7FF55E84E1C /* preset-gold-rush.json */,
+				D8C1DFCC7ADD6F59962665DB /* preset-nebula.json */,
+				1F9DED7D6DE276778346A2CF /* preset-solar-wind.json */,
+				307C4C6B51A0B2EE98E25605 /* preset-toxic-storm.json */,
+				6D2A2D2D916B4060D73AF678 /* preset-void-dance.json */,
+			);
+			path = Presets;
+			sourceTree = "<group>";
+		};
+		2BD986B63400C0B7E0A0B512 /* Shaders */ = {
+			isa = PBXGroup;
+			children = (
+				650A720318FA118CEBCC1202 /* ParticleCompute.metal */,
+				05FEDECF7BA29BDE813C646E /* ParticleRender.metal */,
+				D9509AF53953723A32FB39B2 /* SharedTypes.h */,
+			);
+			path = Shaders;
+			sourceTree = "<group>";
+		};
+		8504AED89EE918A341158923 /* Chromafield */ = {
+			isa = PBXGroup;
+			children = (
+				D947B1956B5831419912E84B /* App */,
+				AB59BD50F372F5E7E00DF265 /* Export */,
+				93B4E58A20D10DDC2A481BB5 /* Input */,
+				ED51DCA6E879B7D3578D6740 /* Metal */,
+				F81B990B4A860BFDAEBB2F07 /* Persistence */,
+				BEC4D8F08A1D99F8F09FD48E /* Resources */,
+				F6E6FD504D7CACF1281E5BCE /* Simulation */,
+				89884856CE51010359D7E5C2 /* Support */,
+				A5CBFD2037D9EEE37ADC3188 /* UI */,
+				8DF28D78F5B5055C29A0C2D6 /* Utilities */,
+			);
+			path = Chromafield;
+			sourceTree = "<group>";
+		};
+		89884856CE51010359D7E5C2 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				099809740DC8DC397D6AD5F0 /* Chromafield-Bridging-Header.h */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		8DF28D78F5B5055C29A0C2D6 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				EEB5284B9C599CC6D72AC6C1 /* ColorPalette.swift */,
+				2A00079F066FD42541D1F514 /* DeviceCapabilities.swift */,
+				59C3BA644127822B6DB89A98 /* FrameBudgetMonitor.swift */,
+				6EE269C349ACF885EA61747D /* ParticleBudget.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		93B4E58A20D10DDC2A481BB5 /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				258BEDDF8B35EC0E4D4D4157 /* GestureCoordinator.swift */,
+				CBAE899F506FD9A845D9D3F9 /* InputMapper.swift */,
+				54616621990332E7E680747F /* PencilInputHandler.swift */,
+			);
+			path = Input;
+			sourceTree = "<group>";
+		};
+		A5CBFD2037D9EEE37ADC3188 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				40F096DD3C51FE446152689B /* BehaviorPicker.swift */,
+				5568CF9B721ED73C34AAEC56 /* CanvasContainerView.swift */,
+				C307BC76487A9773D70C0AB9 /* ExportControls.swift */,
+				765E365ACD969E288F693B07 /* MetalCanvasView.swift */,
+				2C3DF2CF5C24EC3E84339B16 /* PaletteSelector.swift */,
+				17D0827C7E850084186E374A /* PresetGallery.swift */,
+				0B4A14F75095AA145B820FDC /* RadialNodeMenu.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		AB59BD50F372F5E7E00DF265 /* Export */ = {
+			isa = PBXGroup;
+			children = (
+				D32F295BE144BFDCAA6EA89A /* ImageExporter.swift */,
+				B179F11602A0649F915142EC /* VideoExporter.swift */,
+			);
+			path = Export;
+			sourceTree = "<group>";
+		};
+		BEC4D8F08A1D99F8F09FD48E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A3D2D7DC56A18E24D2DCD7D7 /* Assets.xcassets */,
+				E9CA6F78764ADA291A497725 /* PrivacyInfo.xcprivacy */,
+				2999A2CE4D056C27F6A46404 /* Presets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		D2CFD904CF45349C089FD14F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DD78A9E5D65AC209C3EE62E8 /* Chromafield.app */,
+				F782C8F058EF65640148E5F5 /* ChromafieldTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D947B1956B5831419912E84B /* App */ = {
+			isa = PBXGroup;
+			children = (
+				790E1BCE96B952389963F7F0 /* ChromafieldApp.swift */,
+				BACDD0168C89C399643351A2 /* ContentView.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		ED51DCA6E879B7D3578D6740 /* Metal */ = {
+			isa = PBXGroup;
+			children = (
+				770B27D2A2F00BE5CDD17566 /* MetalEngine.swift */,
+				BA9FE4C8EB6B5B855176CF83 /* OffscreenRenderer.swift */,
+				964B83E6066E5ED619001D8C /* ParticleBuffer.swift */,
+				2BD986B63400C0B7E0A0B512 /* Shaders */,
+			);
+			path = Metal;
+			sourceTree = "<group>";
+		};
+		F4AEB001A56EC57FEA16AC03 /* ChromafieldTests */ = {
+			isa = PBXGroup;
+			children = (
+				5D89B8C1CE56D68534545A04 /* AdaptiveQualityTests.swift */,
+				9FB69D652C500FB76EA5A7B2 /* BehaviorSimulationTests.swift */,
+				F5762DEB4D31BDA624ADFC62 /* ColorPaletteTests.swift */,
+				3112FA330026206AE5E9111B /* DeviceCapabilitiesTests.swift */,
+				F436F37EA2962E68CD441B41 /* ExportTests.swift */,
+				8CF77BCA30AD318307134B6C /* FieldManagerTests.swift */,
+				9F028D789D743A2C0A16BB67 /* FieldNodeModelTests.swift */,
+				A79BC2107247DCD29C8A0815 /* FrameBudgetMonitorTests.swift */,
+				2441CBDEF1C51B6ABC13C706 /* InputMapperTests.swift */,
+				C1613D17272D09ADA63A1191 /* OffscreenRendererTests.swift */,
+				AA63BD1B5E2412F0B6DBE50A /* PersistenceTests.swift */,
+				50402429310F7E3ECF78251F /* PresetDecodeTests.swift */,
+				123623743C442858B75B30CB /* SimulationTests.swift */,
+			);
+			path = ChromafieldTests;
+			sourceTree = "<group>";
+		};
+		F6E6FD504D7CACF1281E5BCE /* Simulation */ = {
+			isa = PBXGroup;
+			children = (
+				7B9F2976841F026F2488FAE4 /* FieldManager.swift */,
+				472EBC3891049691665E761D /* FieldNodeModel.swift */,
+				94E3B7ACEB07AB519E184785 /* ParticleBehavior.swift */,
+				4C652413426E9C35C7455887 /* SimulationConfig.swift */,
+			);
+			path = Simulation;
+			sourceTree = "<group>";
+		};
+		F81B990B4A860BFDAEBB2F07 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				94B19B5AC9CC318272989439 /* FieldConfig.swift */,
+				84F2341CCEF6BDA9957FC8EA /* PersistenceManager.swift */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
+		FD20CBBEC15101DB4EC82788 = {
+			isa = PBXGroup;
+			children = (
+				8504AED89EE918A341158923 /* Chromafield */,
+				F4AEB001A56EC57FEA16AC03 /* ChromafieldTests */,
+				D2CFD904CF45349C089FD14F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A04BFB5C1FD163428C531CF3 /* ChromafieldTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5B887825745448D5580593FD /* Build configuration list for PBXNativeTarget "ChromafieldTests" */;
+			buildPhases = (
+				4695C47AB7D1DC87DBD69A5D /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BC579720F54BD8B324B97E25 /* PBXTargetDependency */,
+			);
+			name = ChromafieldTests;
+			packageProductDependencies = (
+			);
+			productName = ChromafieldTests;
+			productReference = F782C8F058EF65640148E5F5 /* ChromafieldTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		DC9835FF16D218078CBAAB5E /* Chromafield */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 85106889DF8C3DE8219C9A23 /* Build configuration list for PBXNativeTarget "Chromafield" */;
+			buildPhases = (
+				735F94E392EACFF55B2A633A /* Sources */,
+				9AFD49C154760411EE3F5D65 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Chromafield;
+			packageProductDependencies = (
+			);
+			productName = Chromafield;
+			productReference = DD78A9E5D65AC209C3EE62E8 /* Chromafield.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2B24F81CF39C63ECF5570F97 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+				};
+			};
+			buildConfigurationList = FCB404D722DFF890B78A0E5D /* Build configuration list for PBXProject "Chromafield" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = FD20CBBEC15101DB4EC82788;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = D2CFD904CF45349C089FD14F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DC9835FF16D218078CBAAB5E /* Chromafield */,
+				A04BFB5C1FD163428C531CF3 /* ChromafieldTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9AFD49C154760411EE3F5D65 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8E52C15A08CB54C3317F61D3 /* Assets.xcassets in Resources */,
+				9D4D9A737D696A630702976A /* PrivacyInfo.xcprivacy in Resources */,
+				9328023CB2F6BFDF8D269DF1 /* preset-crystal-web.json in Resources */,
+				2D3F189D6437ED60471BC07F /* preset-gold-rush.json in Resources */,
+				288110FB6ACA78006A33BC6A /* preset-nebula.json in Resources */,
+				DF900E916C19F8A52AFB9120 /* preset-solar-wind.json in Resources */,
+				F825442884D9D6E5070CEF94 /* preset-toxic-storm.json in Resources */,
+				D462377BA27F5D22D50639A3 /* preset-void-dance.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4695C47AB7D1DC87DBD69A5D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B7A347F66A37DC025E7609B7 /* AdaptiveQualityTests.swift in Sources */,
+				7F83A202633926DA2F01DC1A /* BehaviorSimulationTests.swift in Sources */,
+				51F91E9A8A426F0316149904 /* ColorPaletteTests.swift in Sources */,
+				AF92524A3C4CBD68F64954B2 /* DeviceCapabilitiesTests.swift in Sources */,
+				2BC2CF06DB32340A48851838 /* ExportTests.swift in Sources */,
+				A4DE196E6D12211D6122AD48 /* FieldManagerTests.swift in Sources */,
+				5C9B2948E0D31E101EB3C6D0 /* FieldNodeModelTests.swift in Sources */,
+				55B0AD2A0621131DD3434100 /* FrameBudgetMonitorTests.swift in Sources */,
+				AEAF6EE012F61812509E71E8 /* InputMapperTests.swift in Sources */,
+				CEB5B80A30BC62DBE07B9BD2 /* OffscreenRendererTests.swift in Sources */,
+				5D35F405B97473FE04764FEA /* PersistenceTests.swift in Sources */,
+				46E97A6E0196464F22801562 /* PresetDecodeTests.swift in Sources */,
+				84AD131B842762CE2FC2D4C5 /* SimulationTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		735F94E392EACFF55B2A633A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3038F29FAF12A3ADA4BD41A8 /* BehaviorPicker.swift in Sources */,
+				01E110DB7D754A41C8A7E9A2 /* CanvasContainerView.swift in Sources */,
+				EB7AA9FE4D753D071A573881 /* ChromafieldApp.swift in Sources */,
+				E323DAFE288D09FE915A19AA /* ColorPalette.swift in Sources */,
+				C08AFEFDD6C8D6FCE86FB259 /* ContentView.swift in Sources */,
+				F86FF0C43279985B9F3DF78D /* DeviceCapabilities.swift in Sources */,
+				6E09C011FD0C82AA05118B4F /* ExportControls.swift in Sources */,
+				D41D5658AC6AF7C856ECC582 /* FieldConfig.swift in Sources */,
+				2B51CEB2222C90462D1181D2 /* FieldManager.swift in Sources */,
+				174DADA1ACF4A0700458DDBF /* FieldNodeModel.swift in Sources */,
+				BF36D20E6A6E665AC0D0098D /* FrameBudgetMonitor.swift in Sources */,
+				E19B4F5DDBF22869DAB68451 /* GestureCoordinator.swift in Sources */,
+				D499D9BD1C3C4ADE5DF90678 /* ImageExporter.swift in Sources */,
+				0EF5272E4591B052D9A69B04 /* InputMapper.swift in Sources */,
+				10CE833B81D3924F83BB5D34 /* MetalCanvasView.swift in Sources */,
+				18CE8022D4D17E4E7FA66D0F /* MetalEngine.swift in Sources */,
+				6A28096FC02F1D8662DC1E56 /* OffscreenRenderer.swift in Sources */,
+				2E3B94D14CDF74511CFF0715 /* PaletteSelector.swift in Sources */,
+				E21F015572BE5F681DD248F4 /* ParticleBehavior.swift in Sources */,
+				A14E2F261165679C82B02795 /* ParticleBudget.swift in Sources */,
+				DB5B7A17082A5A93E3856708 /* ParticleBuffer.swift in Sources */,
+				CBFBAA79EBF0EB6DDBF629CC /* ParticleCompute.metal in Sources */,
+				D6C6D44E22CC720DD0621B3F /* ParticleRender.metal in Sources */,
+				E4CCCF2F4043385ED3C8D2BF /* PencilInputHandler.swift in Sources */,
+				FD0D4AFAB9D52B3D731C3A56 /* PersistenceManager.swift in Sources */,
+				86190218FEC9ADD8543A76C7 /* PresetGallery.swift in Sources */,
+				96885A32405631A6949A86D9 /* RadialNodeMenu.swift in Sources */,
+				93D779A5BDAAAACCCF4F7CB6 /* SimulationConfig.swift in Sources */,
+				446C1D35878F81B575A0B664 /* VideoExporter.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BC579720F54BD8B324B97E25 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DC9835FF16D218078CBAAB5E /* Chromafield */;
+			targetProxy = 71BCEF79F996088F91F0B099 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		2E350E8013A4D6903FA032DA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/Chromafield/Metal/Shaders";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Chromafield saves your particle art to your photo library.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortraitUpsideDown";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MTL_HEADER_SEARCH_PATHS = "$(SRCROOT)/Chromafield/Metal/Shaders";
+				PRODUCT_BUNDLE_IDENTIFIER = com.chromafield.app;
+				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "Chromafield/Support/Chromafield-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		79DF2D7EBBFF3A1C71A4E215 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/Chromafield/Metal/Shaders";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Chromafield saves your particle art to your photo library.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortraitUpsideDown";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MTL_HEADER_SEARCH_PATHS = "$(SRCROOT)/Chromafield/Metal/Shaders";
+				PRODUCT_BUNDLE_IDENTIFIER = com.chromafield.app;
+				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "Chromafield/Support/Chromafield-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		8AA6A2A80D79ED245CE0CBE2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.chromafield.app.tests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Chromafield.app/Chromafield";
+			};
+			name = Release;
+		};
+		9659A7E6E42BDE91B1B788D0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BAC277928D6393092184AFCB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		D9C9F8F8049B0105BF049D40 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.chromafield.app.tests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Chromafield.app/Chromafield";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5B887825745448D5580593FD /* Build configuration list for PBXNativeTarget "ChromafieldTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D9C9F8F8049B0105BF049D40 /* Debug */,
+				8AA6A2A80D79ED245CE0CBE2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		85106889DF8C3DE8219C9A23 /* Build configuration list for PBXNativeTarget "Chromafield" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2E350E8013A4D6903FA032DA /* Debug */,
+				79DF2D7EBBFF3A1C71A4E215 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		FCB404D722DFF890B78A0E5D /* Build configuration list for PBXProject "Chromafield" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9659A7E6E42BDE91B1B788D0 /* Debug */,
+				BAC277928D6393092184AFCB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2B24F81CF39C63ECF5570F97 /* Project object */;
+}
