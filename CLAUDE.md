@@ -22,8 +22,8 @@ Chromafield is a universal iOS/iPadOS generative art instrument built in Swift/S
 - Write XCTest unit tests for every non-trivial data transform before committing
 
 ## Current Phase
-**Phase 0: Metal Engine**
-See IMPLEMENTATION-ROADMAP.md → Phase 0 for full task list and acceptance criteria.
+**v1.0 Feature Complete** — All 3 phases implemented (Metal Engine, Interactive Canvas, Export + Polish).
+See IMPLEMENTATION-ROADMAP.md for full architecture and phase details.
 
 ## Key Decisions
 | Decision | Choice | Rationale |
