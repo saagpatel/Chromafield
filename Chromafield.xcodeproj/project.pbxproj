@@ -29,10 +29,12 @@
 		7F83A202633926DA2F01DC1A /* BehaviorSimulationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB69D652C500FB76EA5A7B2 /* BehaviorSimulationTests.swift */; };
 		84AD131B842762CE2FC2D4C5 /* SimulationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123623743C442858B75B30CB /* SimulationTests.swift */; };
 		86190218FEC9ADD8543A76C7 /* PresetGallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D0827C7E850084186E374A /* PresetGallery.swift */; };
+		8DC4DE4D1D0528AEC06DDDAE /* CanvasHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E042F8F47F2A76496367E9 /* CanvasHUD.swift */; };
 		8E52C15A08CB54C3317F61D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3D2D7DC56A18E24D2DCD7D7 /* Assets.xcassets */; };
 		9328023CB2F6BFDF8D269DF1 /* preset-crystal-web.json in Resources */ = {isa = PBXBuildFile; fileRef = 9855BD5161A283B3AF41AA5E /* preset-crystal-web.json */; };
 		93D779A5BDAAAACCCF4F7CB6 /* SimulationConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C652413426E9C35C7455887 /* SimulationConfig.swift */; };
 		96885A32405631A6949A86D9 /* RadialNodeMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4A14F75095AA145B820FDC /* RadialNodeMenu.swift */; };
+		9888831766E987D3F1788722 /* CanvasSettingsSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDF5EB7944E52CFBE4923E3 /* CanvasSettingsSheet.swift */; };
 		9D4D9A737D696A630702976A /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = E9CA6F78764ADA291A497725 /* PrivacyInfo.xcprivacy */; };
 		A14E2F261165679C82B02795 /* ParticleBudget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE269C349ACF885EA61747D /* ParticleBudget.swift */; };
 		A4DE196E6D12211D6122AD48 /* FieldManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF77BCA30AD318307134B6C /* FieldManagerTests.swift */; };
@@ -119,11 +121,13 @@
 		D8C1DFCC7ADD6F59962665DB /* preset-nebula.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "preset-nebula.json"; sourceTree = "<group>"; };
 		D9509AF53953723A32FB39B2 /* SharedTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SharedTypes.h; sourceTree = "<group>"; };
 		DD78A9E5D65AC209C3EE62E8 /* Chromafield.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Chromafield.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E8E042F8F47F2A76496367E9 /* CanvasHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasHUD.swift; sourceTree = "<group>"; };
 		E9CA6F78764ADA291A497725 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		EEB5284B9C599CC6D72AC6C1 /* ColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
 		F436F37EA2962E68CD441B41 /* ExportTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportTests.swift; sourceTree = "<group>"; };
 		F5762DEB4D31BDA624ADFC62 /* ColorPaletteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPaletteTests.swift; sourceTree = "<group>"; };
 		F782C8F058EF65640148E5F5 /* ChromafieldTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = ChromafieldTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FDDF5EB7944E52CFBE4923E3 /* CanvasSettingsSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasSettingsSheet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -201,6 +205,8 @@
 			children = (
 				40F096DD3C51FE446152689B /* BehaviorPicker.swift */,
 				5568CF9B721ED73C34AAEC56 /* CanvasContainerView.swift */,
+				E8E042F8F47F2A76496367E9 /* CanvasHUD.swift */,
+				FDDF5EB7944E52CFBE4923E3 /* CanvasSettingsSheet.swift */,
 				C307BC76487A9773D70C0AB9 /* ExportControls.swift */,
 				765E365ACD969E288F693B07 /* MetalCanvasView.swift */,
 				2C3DF2CF5C24EC3E84339B16 /* PaletteSelector.swift */,
@@ -422,6 +428,8 @@
 			files = (
 				3038F29FAF12A3ADA4BD41A8 /* BehaviorPicker.swift in Sources */,
 				01E110DB7D754A41C8A7E9A2 /* CanvasContainerView.swift in Sources */,
+				8DC4DE4D1D0528AEC06DDDAE /* CanvasHUD.swift in Sources */,
+				9888831766E987D3F1788722 /* CanvasSettingsSheet.swift in Sources */,
 				EB7AA9FE4D753D071A573881 /* ChromafieldApp.swift in Sources */,
 				E323DAFE288D09FE915A19AA /* ColorPalette.swift in Sources */,
 				C08AFEFDD6C8D6FCE86FB259 /* ContentView.swift in Sources */,

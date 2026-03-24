@@ -18,6 +18,7 @@ struct ContentView: View {
     @State private var savedConfigs: [FieldConfig] = []
     @State private var bundledPresets: [FieldConfig] = []
     @State private var showQualityToast = false
+    @State private var showCanvasSettings = false
 
     var body: some View {
         GeometryReader { geometry in
@@ -77,6 +78,21 @@ struct ContentView: View {
                             Spacer()
                         }
                         .transition(.opacity)
+                    }
+
+                    // Canvas HUD (bottom-left, above toolbar)
+                    VStack {
+                        Spacer()
+                        HStack {
+                            CanvasHUD(
+                                nodeCount: fieldManager.nodes.count,
+                                particleCount: engine.particleCount,
+                                onTap: { showCanvasSettings = true }
+                            )
+                            Spacer()
+                        }
+                        .padding(.leading, 16)
+                        .padding(.bottom, 70)
                     }
 
                     // Palette selector overlay
@@ -156,6 +172,24 @@ struct ContentView: View {
                         savedConfigs = persistenceManager.loadAll()
                     }
                 )
+            }
+            .sheet(isPresented: $showCanvasSettings) {
+                if let engine, let budget = particleBudget {
+                    CanvasSettingsSheet(
+                        particleCount: engine.particleCount,
+                        maxParticles: budget.maxParticles,
+                        currentBehavior: currentBehavior,
+                        onSelectBehavior: { behavior in
+                            currentBehavior = behavior
+                            engine.setBehavior(behavior)
+                        },
+                        onClearNodes: {
+                            fieldManager.replaceNodes([])
+                            engine.clearAccumulationTexture()
+                            showCanvasSettings = false
+                        }
+                    )
+                }
             }
             .sheet(isPresented: $showExportControls) {
                 if let engine, let budget = particleBudget {
