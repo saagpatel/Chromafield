@@ -361,6 +361,9 @@
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
+					DC9835FF16D218078CBAAB5E = {
+						DevelopmentTeam = 3TGZFKFNA4;
+					};
 				};
 			};
 			buildConfigurationList = FCB404D722DFF890B78A0E5D /* Build configuration list for PBXProject "Chromafield" */;
@@ -476,6 +479,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = 3TGZFKFNA4;
 				GENERATE_INFOPLIST_FILE = YES;
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/Chromafield/Metal/Shaders";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Chromafield saves your particle art to your photo library.";
@@ -500,6 +504,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = 3TGZFKFNA4;
 				GENERATE_INFOPLIST_FILE = YES;
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/Chromafield/Metal/Shaders";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Chromafield saves your particle art to your photo library.";
