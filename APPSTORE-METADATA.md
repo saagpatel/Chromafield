@@ -156,3 +156,6 @@ No reviewer account, credentials, or network connectivity required.
 - [ ] Verify MP4 export on physical device: < 30 seconds, 10-second loop, plays at 60fps in Photos
 - [ ] Test on iPhone SE (smallest supported screen) — no layout overflow in UI overlays
 - [ ] Submit for Review
+
+## Copyright
+© 2026 saagpatel
