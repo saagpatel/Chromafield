@@ -72,13 +72,13 @@ Place forces. Watch particles respond. Export the art. Metal-powered generative 
 
 ## Support URL
 
-*(Enter your support URL — e.g. a GitHub repo or personal site)*
+https://github.com/saagpatel/Chromafield/issues
 
 ---
 
 ## Privacy Policy URL
 
-*(Required — can be a simple static page stating no data is collected)*
+https://github.com/saagpatel/Chromafield/blob/main/PRIVACY.md
 
 ---
 
