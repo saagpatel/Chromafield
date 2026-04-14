@@ -1,0 +1,29 @@
+Chromafield is a particle art instrument. Place field nodes on a canvas — attractors, repellers, vortices, chaos emitters — and watch thousands of particles respond in real time. Every placement is a brushstroke. Every configuration is a composition.
+
+Built on Metal, Chromafield runs up to 200,000 particles at 60fps. The physics are real: particles are pulled, pushed, spun, and scattered according to the forces you place. Apple Pencil pressure maps to field strength — a light touch creates gentle currents; full pressure warps the field.
+
+Four particle behaviors:
+• Flock — particles align into murmurations, streaming like starlings
+• Diffuse — particles drift with Brownian scatter, filling the canvas like ink in water
+• Crystal — particles lock into geometric lattices, snapping to invisible grids
+• Orbit — particles circle attractors in rings, forming solar system–like structures
+
+Eight curated palettes:
+Ember, Glacial, Void, Toxic, Dusk, Ocean, Mono, Forge — each carefully tuned so fast particles glow brighter than slow ones, giving the field a sense of energy and depth.
+
+Four field node types:
+• Attractor — pulls particles toward a point with configurable falloff
+• Repeller — pushes particles outward in a radial burst
+• Vortex — rotates particles in a circular current
+• Chaos — introduces turbulence, breaking ordered patterns apart
+
+Save, load, export:
+• Save field configurations and reload them later
+• 6 bundled presets to explore: Nebula, Crystal Web, Solar Wind, Void Dance, Toxic Storm, Gold Rush
+• Export as a full-resolution PNG (2× screen resolution) to your photo library
+• Export as a 10-second MP4 loop at 60fps, rendered offline for maximum quality
+• Field nodes are never visible in exports — only the particle art
+
+No accounts. No cloud. No ads. No subscriptions. Chromafield is entirely offline. Your saved configurations live in your app's local storage, nothing more.
+
+Works with finger and Apple Pencil on iPhone and iPad.
