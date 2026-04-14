@@ -30,6 +30,12 @@ targets:
         MTL_HEADER_SEARCH_PATHS: "$(SRCROOT)/Chromafield/Metal/Shaders"
         PRODUCT_BUNDLE_IDENTIFIER: com.chromafield.app
         DEVELOPMENT_TEAM: 3TGZFKFNA4
+        MARKETING_VERSION: "1.0.0"
+        CURRENT_PROJECT_VERSION: "1"
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        CODE_SIGN_STYLE: Manual
+        CODE_SIGN_IDENTITY: "Apple Distribution: SAAGAR I PATEL (3TGZFKFNA4)"
+        PROVISIONING_PROFILE_SPECIFIER: Chromafield App Store
         INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription: "Chromafield saves your particle art to your photo library."
     scheme:
       testTargets:
