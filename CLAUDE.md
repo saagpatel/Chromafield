@@ -46,3 +46,45 @@ See IMPLEMENTATION-ROADMAP.md for full architecture and phase details.
 - Do not request network entitlements — this app is fully offline, no exceptions
 - Do not add v2 features (audio, time-varying fields, GIF export, 4× resolution) during the v1 build
 - Do not add features not in the current phase of IMPLEMENTATION-ROADMAP.md
+
+<!-- portfolio-context:start -->
+# Portfolio Context
+
+## What This Project Is
+
+Chromafield is a universal iOS/iPadOS generative art instrument built in Swift/SwiftUI + Metal. Users place field nodes (attractors, repellers, vortices, turbulence emitters) on a canvas with Apple Pencil or finger; thousands of particles respond in real-time to the combined force field. Free App Store release — no monetization, no accounts, no network. Portfolio piece.
+
+## Current State
+
+**v1.0 Feature Complete** — All 3 phases implemented (Metal Engine, Interactive Canvas, Export + Polish).
+See IMPLEMENTATION-ROADMAP.md for full architecture and phase details.
+
+## Stack
+
+- Swift: 5.10+
+- SwiftUI: iOS 17+ (overlay UI only — NOT the canvas)
+- Metal / MetalKit: iOS 17+ (MTKView, compute + render pipelines)
+- AVFoundation: iOS 17+ (AVAssetWriter for MP4 export)
+- UIKit: iOS 17+ (UIGestureRecognizer, UIViewRepresentable)
+- Accelerate: iOS 17+ (CPU simulation fallback only)
+- XCTest: bundled (headless simulation correctness tests)
+- No SPM dependencies — all first-party
+
+## How To Run
+
+Build and run on a physical device for full GPU performance. Tap the canvas to place field nodes and use the behavior strip to switch particle modes.
+
+## Known Risks
+
+- Do not use SwiftUI gestures on the canvas — all touch/Pencil input goes through UIGestureRecognizer on the UIView layer
+- Do not attempt O(n²) neighbor scan for Flocking — use spatial grid hash + two-pass compute
+- Do not record live simulation frames for video export — use the offline OffscreenRenderer path
+- Do not request network entitlements — this app is fully offline, no exceptions
+- Do not add v2 features (audio, time-varying fields, GIF export, 4× resolution) during the v1 build
+- Do not add features not in the current phase of IMPLEMENTATION-ROADMAP.md
+
+## Next Recommended Move
+
+Use this context plus the README and supporting docs to resume the next active task, then promote the repo beyond minimum-viable by capturing a dedicated handoff, roadmap, or discovery artifact.
+
+<!-- portfolio-context:end -->
