@@ -43,11 +43,28 @@ final class ImageExporter {
             throw ExportError.renderFailed
         }
 
-        // Save to Photos
-        try await PHPhotoLibrary.shared().performChanges {
-            PHAssetChangeRequest.creationRequestForAsset(from: image)
+        guard let imageData = image.pngData() else {
+            throw ExportError.saveFailed("Unable to encode image")
         }
 
+        let outputURL = FileManager.default.temporaryDirectory
+            .appendingPathComponent("chromafield-\(UUID().uuidString).png")
+        try imageData.write(to: outputURL, options: .atomic)
+        defer {
+            try? FileManager.default.removeItem(at: outputURL)
+        }
+
+        // Save to Photos
+        try await PhotoLibraryExporter.saveImage(at: outputURL)
+
         return image
+    }
+}
+
+private enum PhotoLibraryExporter {
+    static func saveImage(at url: URL) async throws {
+        try await PHPhotoLibrary.shared().performChanges {
+            PHAssetChangeRequest.creationRequestForAssetFromImage(atFileURL: url)
+        }
     }
 }
