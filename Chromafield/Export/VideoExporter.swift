@@ -145,7 +145,11 @@ final class VideoExporter: ObservableObject {
 
         // Finalize
         input.markAsFinished()
-        await writer.finishWriting()
+        await withCheckedContinuation { continuation in
+            writer.finishWriting {
+                continuation.resume()
+            }
+        }
 
         guard writer.status == .completed else {
             try? FileManager.default.removeItem(at: outputURL)
@@ -153,14 +157,20 @@ final class VideoExporter: ObservableObject {
         }
 
         // Save to Photos (must happen before temp file deletion)
-        try await PHPhotoLibrary.shared().performChanges {
-            PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: outputURL)
-        }
+        try await PhotoLibraryVideoExporter.saveVideo(at: outputURL)
 
         // Clean up temp file after Photos has copied it
         let savedURL = outputURL
         try? FileManager.default.removeItem(at: outputURL)
 
         return savedURL
+    }
+}
+
+private enum PhotoLibraryVideoExporter {
+    static func saveVideo(at url: URL) async throws {
+        try await PHPhotoLibrary.shared().performChanges {
+            PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: url)
+        }
     }
 }

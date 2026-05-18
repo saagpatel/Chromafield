@@ -55,10 +55,16 @@ final class ImageExporter {
         }
 
         // Save to Photos
-        try await PHPhotoLibrary.shared().performChanges {
-            PHAssetChangeRequest.creationRequestForAssetFromImage(atFileURL: outputURL)
-        }
+        try await PhotoLibraryExporter.saveImage(at: outputURL)
 
         return image
+    }
+}
+
+private enum PhotoLibraryExporter {
+    static func saveImage(at url: URL) async throws {
+        try await PHPhotoLibrary.shared().performChanges {
+            PHAssetChangeRequest.creationRequestForAssetFromImage(atFileURL: url)
+        }
     }
 }
