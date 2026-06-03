@@ -8,7 +8,7 @@ Universal iOS/iPadOS generative art instrument — Swift/SwiftUI + Metal. Users 
 - Metal / MetalKit iOS 17+ (MTKView, compute + render pipelines)
 - AVFoundation iOS 17+ (AVAssetWriter for MP4 export)
 - UIKit iOS 17+ (UIGestureRecognizer, UIViewRepresentable)
-- XCTest bundled (headless simulation correctness tests)
+- XCTest bundled (simulation, persistence, input, export, and utility unit tests)
 - No SPM dependencies — all first-party
 
 ## Build / Test / Run
@@ -67,7 +67,7 @@ See IMPLEMENTATION-ROADMAP.md for full architecture and phase details.
 - Metal / MetalKit: iOS 17+ (MTKView, compute + render pipelines)
 - AVFoundation: iOS 17+ (AVAssetWriter for MP4 export)
 - UIKit: iOS 17+ (UIGestureRecognizer, UIViewRepresentable)
-- XCTest: bundled (headless simulation correctness tests)
+- XCTest: bundled (simulation, persistence, input, export, and utility unit tests)
 - No SPM dependencies — all first-party
 
 ## How To Run
