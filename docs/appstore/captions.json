@@ -1,0 +1,17 @@
+{
+	"_note": "Overlay caption per screenshot. Each <=30 chars. Richer alternates (B/C) live in screenshots.md.",
+	"iphone-69": [
+		{ "file": "01-orbit.png", "caption": "Place forces. Watch them orbit" },
+		{ "file": "02-flock.png", "caption": "200K particles, one field" },
+		{ "file": "03-presets.png", "caption": "Six presets, endless variants" },
+		{ "file": "04-export.png", "caption": "Export as PNG or 60fps video" },
+		{ "file": "05-pencil.png", "caption": "Apple Pencil bends the field" }
+	],
+	"ipad-13": [
+		{ "file": "01-orbit.png", "caption": "Place forces. Watch them orbit" },
+		{ "file": "02-flock.png", "caption": "200K particles, one field" },
+		{ "file": "03-presets.png", "caption": "Six presets, endless variants" },
+		{ "file": "04-export.png", "caption": "Export as PNG or 60fps video" },
+		{ "file": "05-pencil.png", "caption": "Apple Pencil bends the field" }
+	]
+}
