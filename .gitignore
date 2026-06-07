@@ -25,3 +25,10 @@ Pods/
 .DS_Store
 *.swp
 *~
+
+# Secrets — never commit
+*.p8
+**/private_keys/
+.env
+.env.*
+!.env.example
