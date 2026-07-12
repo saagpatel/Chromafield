@@ -14,7 +14,7 @@ final class VideoExporter: ObservableObject {
         engine: MetalEngine,
         budget: ParticleBudget,
         screenSize: CGSize
-    ) async throws -> URL {
+    ) async throws {
         guard !isExporting else { throw ExportError.saveFailed("Export already in progress") }
 
         // Request permission
@@ -45,6 +45,7 @@ final class VideoExporter: ObservableObject {
         // Setup AVAssetWriter
         let outputURL = FileManager.default.temporaryDirectory
             .appendingPathComponent("chromafield-\(UUID().uuidString).mp4")
+        defer { try? FileManager.default.removeItem(at: outputURL) }
 
         let writer = try AVAssetWriter(outputURL: outputURL, fileType: .mp4)
 
@@ -73,8 +74,13 @@ final class VideoExporter: ObservableObject {
             sourcePixelBufferAttributes: sourceAttributes
         )
 
+        guard writer.canAdd(input) else {
+            throw ExportError.saveFailed("The video encoder rejected its input configuration")
+        }
         writer.add(input)
-        writer.startWriting()
+        guard writer.startWriting() else {
+            throw ExportError.saveFailed(writer.error?.localizedDescription ?? "The video encoder could not start")
+        }
         writer.startSession(atSourceTime: .zero)
 
         // Create renderer with fresh accumulation
@@ -94,6 +100,11 @@ final class VideoExporter: ObservableObject {
 
             // Wait for writer to be ready
             while !input.isReadyForMoreMediaData {
+                guard writer.status == .writing else {
+                    throw ExportError.saveFailed(
+                        writer.error?.localizedDescription ?? "The video encoder stopped unexpectedly"
+                    )
+                }
                 try await Task.sleep(for: .milliseconds(1))
             }
 
@@ -133,7 +144,13 @@ final class VideoExporter: ObservableObject {
             )
 
             let presentationTime = CMTime(value: CMTimeValue(frame), timescale: fps)
-            adaptor.append(buffer, withPresentationTime: presentationTime)
+            guard adaptor.append(buffer, withPresentationTime: presentationTime) else {
+                writer.cancelWriting()
+                try? FileManager.default.removeItem(at: outputURL)
+                throw ExportError.saveFailed(
+                    writer.error?.localizedDescription ?? "The video encoder rejected frame \(frame + 1)"
+                )
+            }
 
             progress = Float(frame + 1) / Float(frameCount)
 
@@ -159,11 +176,6 @@ final class VideoExporter: ObservableObject {
         // Save to Photos (must happen before temp file deletion)
         try await PhotoLibraryVideoExporter.saveVideo(at: outputURL)
 
-        // Clean up temp file after Photos has copied it
-        let savedURL = outputURL
-        try? FileManager.default.removeItem(at: outputURL)
-
-        return savedURL
     }
 }
 

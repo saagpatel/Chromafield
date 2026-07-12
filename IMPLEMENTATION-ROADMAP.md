@@ -45,13 +45,13 @@ Chromafield/
 │   │   ├── Shaders/
 │   │   │   ├── ParticleCompute.metal     # Compute kernel: force eval + velocity integration
 │   │   │   ├── ParticleRender.metal      # Vertex + fragment: point sprites, trail accumulation
-│   │   │   └── SharedTypes.metal         # Structs shared between Swift and Metal (bridging)
+│   │   │   └── SharedTypes.h             # Structs shared between Swift and Metal (bridging)
 │   │   ├── MetalEngine.swift             # MTKViewDelegate, pipeline setup, triple-buffered render loop
 │   │   ├── ParticleBuffer.swift          # MTLBuffer wrapper — initializes/owns particle state arrays
 │   │   └── OffscreenRenderer.swift       # Export-mode renderer — renders frames to MTLTexture off-screen
 │   ├── Simulation/
 │   │   ├── FieldManager.swift            # Owns [FieldNodeModel], uploads GPU buffer each frame
-│   │   ├── FieldNode.swift               # Model: type, position, strength, direction — Codable
+│   │   ├── FieldNodeModel.swift          # Model: type, position, strength, direction — Codable
 │   │   ├── ParticleBehavior.swift        # Enum: flocking, diffusion, crystallization, orbital
 │   │   └── SimulationConfig.swift        # Particle count budget, timestep, drag coefficient
 │   ├── Input/
@@ -87,15 +87,14 @@ Chromafield/
 
 ### Core Data Structures
 
-All structs in `SharedTypes.metal` are shared between Swift and Metal via the project's bridging header. Every struct must be 32-byte aligned. Assert sizes in `SimulationTests.swift`.
+All structs in `SharedTypes.h` are shared between Swift and Metal via the project's bridging header. Every struct must be 32-byte aligned. Assert sizes in `SimulationTests.swift`.
 
 ```metal
-// SharedTypes.metal
+// SharedTypes.h
 
 struct Particle {
     float2 position;   // normalized [0,1] canvas coordinates
     float2 velocity;   // units/frame
-    float4 color;      // RGBA, updated per frame via palette lookup
     float  age;        // frames since last reset
     float  lifetime;   // max frames before particle resets
     float  speed;      // cached length(velocity) for palette lerp
@@ -171,6 +170,7 @@ struct FieldConfig: Codable {
     var nodes: [FieldNodeModel]
     var behavior: ParticleBehavior
     var paletteIndex: Int         // 0–7
+    var noiseScale: Float         // compute-noise intensity, backward-compatible default 0.5
     var thumbnailData: Data?      // 200×200 PNG, generated on save
 }
 
@@ -248,7 +248,8 @@ let paletteNames = ["Ember", "Glacial", "Void", "Toxic", "Dusk", "Ocean", "Mono"
 ```swift
 // DeviceCapabilities.swift
 // Use sysctl("hw.targettype") or UIDevice.current.model to classify chip tier.
-// Never change particleCount mid-session — set once at launch.
+// Adaptive quality may lower particleCount after sustained frame-budget overruns,
+// but never below the configured 5,000-particle floor.
 
 func detectParticleBudget() -> ParticleBudget {
     let isIPad = UIDevice.current.userInterfaceIdiom == .pad
@@ -449,7 +450,7 @@ Threshold: 14ms (leaves 2ms headroom for 60fps). Never increase particle count m
 **Tasks:**
 1. Create Xcode project — Universal target (iPad + iPhone), iOS 17.0 deployment target, Swift 5.10, Metal enabled, add ChromafieldTests test target. — **Acceptance:** `xcodebuild build -scheme Chromafield` exits 0 with zero warnings.
 
-2. Define `SharedTypes.metal` with `Particle`, `FieldNode`, `SimParams` structs. Add bridging header. Add size assertions to `SimulationTests.swift`: `XCTAssertEqual(MemoryLayout<Particle>.size, 32)`, `XCTAssertEqual(MemoryLayout<FieldNode>.size, 32)`. — **Acceptance:** `xcodebuild test` passes size assertions.
+2. Define `SharedTypes.h` with `Particle`, `FieldNode`, `SimParams` structs. Add bridging header. Add size assertions to `SimulationTests.swift`: `XCTAssertEqual(MemoryLayout<Particle>.size, 32)`, `XCTAssertEqual(MemoryLayout<FieldNode>.size, 32)`. — **Acceptance:** `xcodebuild test` passes size assertions.
 
 3. Implement `ParticleBuffer.swift` — wraps `MTLBuffer`, initializes N particles with random positions in [0,1] and zero velocity, exposes typed UnsafeMutablePointer. — **Acceptance:** Allocate 200,000 particles on M4 device without MTLBuffer error; all initial positions log within [0,1].
 
@@ -579,7 +580,7 @@ Threshold: 14ms (leaves 2ms headroom for 60fps). Never increase particle count m
    - No network entitlements declared
    - App Icon: all required sizes in `Assets.xcassets`
    - Privacy manifest (`PrivacyInfo.xcprivacy`): no data collected, no tracking
-   - App Store Connect: screenshots for 12.9" iPad and 6.7" iPhone (both required), app description, support URL, privacy policy URL (static "no data collected" page)
+   - App Store Connect: screenshots for 13" iPad and 6.9" iPhone (both required), app description, support URL, privacy policy URL (static "no data collected" page)
    — **Acceptance:** `xcodebuild archive` succeeds; App Store Connect upload passes automated validation with no errors.
 
 **Verification Checklist:**
@@ -598,10 +599,18 @@ Threshold: 14ms (leaves 2ms headroom for 60fps). Never increase particle count m
 | Test File | What It Covers |
 |-----------|----------------|
 | `SimulationTests.swift` | Particle bounds [0,1], velocity magnitude < 10.0, no NaN after 300 frames |
-| `DeviceCapabilityTests.swift` | `detectParticleBudget()` returns correct budgets per mocked chip tier |
+| `DeviceCapabilitiesTests.swift` | Device identifiers and chip tiers produce the expected budgets |
 | `FrameBudgetMonitorTests.swift` | `isOverBudget` detection from mocked frame time arrays |
 | `PersistenceTests.swift` | `FieldConfig` encode/decode round-trip; all field types; JSON validity |
 | `InputMapperTests.swift` | Pencil force 0.0 → strength 0.1; force 1.0 → strength 1.0; azimuth pass-through |
+| `AdaptiveQualityTests.swift` | Sustained frame overruns reduce quality without crossing the minimum budget |
+| `BehaviorSimulationTests.swift` | All four simulation behaviors remain finite and bounded |
+| `ColorPaletteTests.swift` | Palette catalog, names, and color-stop structure |
+| `ExportTests.swift` | Export configuration and writer-facing edge cases |
+| `FieldManagerTests.swift` | Field-node add, update, removal, and capacity behavior |
+| `FieldNodeModelTests.swift` | Field-node model defaults and Codable behavior |
+| `OffscreenRendererTests.swift` | Offscreen texture dimensions and renderer setup |
+| `PresetDecodeTests.swift` | Every bundled preset decodes as a valid field configuration |
 
 ### Manual (physical device required)
 | Phase | What To Test |

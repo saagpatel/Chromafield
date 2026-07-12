@@ -19,6 +19,13 @@ struct ContentView: View {
     @State private var bundledPresets: [FieldConfig] = []
     @State private var showQualityToast = false
     @State private var showCanvasSettings = false
+    @State private var presentedError: PresentedError?
+
+    private struct PresentedError: Identifiable {
+        let id = UUID()
+        let title: String
+        let message: String
+    }
 
     var body: some View {
         GeometryReader { geometry in
@@ -168,8 +175,12 @@ struct ContentView: View {
                         showPresetGallery = false
                     },
                     onDelete: { id in
-                        try? persistenceManager.delete(id: id)
-                        savedConfigs = persistenceManager.loadAll()
+                        do {
+                            try persistenceManager.delete(id: id)
+                            savedConfigs = persistenceManager.loadAll()
+                        } catch {
+                            present(error, title: "Couldn’t Delete Configuration")
+                        }
                     }
                 )
             }
@@ -213,6 +224,13 @@ struct ContentView: View {
                     engine?.qualityReduced = false
                 }
             }
+            .alert(item: $presentedError) { error in
+                Alert(
+                    title: Text(error.title),
+                    message: Text(error.message),
+                    dismissButton: .default(Text("OK"))
+                )
+            }
         }
     }
 
@@ -239,11 +257,23 @@ struct ContentView: View {
     // MARK: - Setup
 
     private func setupEngine() {
-        guard let device = MTLCreateSystemDefaultDevice() else { return }
+        guard let device = MTLCreateSystemDefaultDevice() else {
+            presentMessage(
+                "This device could not initialize Metal, which Chromafield requires.",
+                title: "Metal Unavailable"
+            )
+            return
+        }
         let budget = detectParticleBudget()
         self.particleBudget = budget
 
-        guard let newEngine = try? MetalEngine(device: device, particleCount: budget.maxParticles) else { return }
+        let newEngine: MetalEngine
+        do {
+            newEngine = try MetalEngine(device: device, particleCount: budget.maxParticles)
+        } catch {
+            present(error, title: "Couldn’t Start Chromafield")
+            return
+        }
 
         newEngine.paletteProvider = { [newEngine] in
             guard newEngine.activePaletteIndex < palettes.count else { return nil }
@@ -258,8 +288,15 @@ struct ContentView: View {
         self.engine = newEngine
         self.gestureCoordinator = coordinator
         self.pencilHandler = pencil
-        self.bundledPresets = persistenceManager.loadBundledPresets()
+        let presets = persistenceManager.loadBundledPresets()
+        self.bundledPresets = presets
         self.savedConfigs = persistenceManager.loadAll()
+
+        // Launch into a composed field instead of an undifferentiated cloud of
+        // random particles. The canvas remains fully editable from frame one.
+        if let launchPreset = presets.first(where: { $0.name == "Nebula" }) ?? presets.first {
+            loadConfig(launchPreset)
+        }
     }
 
     // MARK: - Config Actions
@@ -283,7 +320,20 @@ struct ContentView: View {
             noiseScale: engine.simParams.noiseScale,
             thumbnailData: engine.renderThumbnail()
         )
-        try? persistenceManager.save(config)
-        savedConfigs = persistenceManager.loadAll()
+        do {
+            try persistenceManager.save(config)
+            savedConfigs = persistenceManager.loadAll()
+        } catch {
+            present(error, title: "Couldn’t Save Configuration")
+        }
+    }
+
+    private func present(_ error: Error, title: String) {
+        let message = (error as? LocalizedError)?.errorDescription ?? error.localizedDescription
+        presentMessage(message, title: title)
+    }
+
+    private func presentMessage(_ message: String, title: String) {
+        presentedError = PresentedError(title: title, message: message)
     }
 }

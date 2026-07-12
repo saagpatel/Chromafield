@@ -14,6 +14,7 @@ A GPU-accelerated particle field canvas for iPhone and iPad. Place field nodes w
 - **Apple Pencil support** — force, azimuth, and altitude mapped to field node parameters
 - **Adaptive quality** — particle budget scales from 20,000 (A15) to 200,000 (M4) based on chip tier
 - **Export** — still PNG via `PHPhotoLibrary`; MP4 video via `AVAssetWriter` through an offscreen Metal pass
+- **Ready-to-edit launch canvas** — starts from the bundled Nebula composition instead of an empty or saturated field
 
 ## Quick Start
 
@@ -29,6 +30,8 @@ cd Chromafield
 xcodegen generate
 open Chromafield.xcodeproj
 ```
+
+For command-line verification, run `make build` and `make test`.
 
 ### Usage
 Build and run on a physical device for full GPU performance. Tap the canvas to place field nodes and use the behavior strip to switch particle modes.

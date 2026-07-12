@@ -1,6 +1,7 @@
 # Xcode
 build/
 DerivedData/
+.derivedData/
 *.xcuserdata
 *.xcworkspace/xcuserdata/
 *.xcodeproj/xcuserdata/
@@ -12,6 +13,7 @@ DerivedData/
 *.ipa
 *.dSYM.zip
 *.dSYM
+fastlane/report.xml
 
 # Swift Package Manager
 .build/

@@ -15,11 +15,14 @@ shipping source; all files are sanitized (no email, API keys, UUIDs, or local pa
 
 ## App facts (verified)
 
-- **Bundle ID:** `com.chromafield.app` · **Version:** 1.0.0 (build 1) · **iOS 17.0+** · Universal (iPhone + iPad)
+- **Bundle ID:** `com.chromafield.app` · **Version:** 1.0.0 (build 3) · **iOS 17.0+** · Universal (iPhone + iPad)
 - **Scheme:** `Chromafield` · **AppIcon:** 1024×1024 present · **Privacy manifest:** present & accurate
 - **Data:** none collected, no network, no tracking → "Data Not Collected", 4+
 
-## Live App Store Connect state (read-only, nothing was mutated)
+## Prior App Store Connect snapshot (reverify before mutation)
+
+The repository records the following earlier read-only observation. It is not a
+current-state guarantee and must be refreshed in App Store Connect before acting:
 
 - App record exists: **Chromafield**, bundle `com.chromafield.app`.
 - **Two `1.0` version objects, both `PREPARE_FOR_SUBMISSION`** — an anomaly:
@@ -29,23 +32,26 @@ shipping source; all files are sanitized (no email, API keys, UUIDs, or local pa
     remove/ignore the duplicate so submission targets the populated one. This was left
     untouched deliberately — it needs human judgment, not a blind API write.
 
-## Remaining manual steps (require Xcode GUI / your credentials)
+## Current local verification
 
-1. **Install the iOS platform** — Xcode → Settings → Components → iOS 26.5 (this env
-   has only the SDK headers, no runtime, so neither a verifying build nor simulator
-   screenshots can run here).
-2. **Verify the build** — `xcodebuild -scheme Chromafield -destination 'generic/platform=iOS' build` (no compile errors were found; the build simply could not run without the platform).
-3. **Capture screenshots** — follow `screenshots.md` (10 PNGs at 1320×2868 / 2064×2752).
-4. **Resolve the duplicate 1.0 version** in ASC (above).
-5. **Archive & upload the binary** — Xcode → Product → Archive → Distribute, or Transporter.
-6. **Answer export compliance** — encryption = No (see `privacy-and-age-rating.md`).
-7. **Confirm metadata + privacy + age rating** in ASC, then **Submit for Review** (not done here, by design).
+- Xcode 26.5 and iOS Simulator 26.5 are installed and active.
+- 69 tests pass on iPhone 17 Pro Simulator.
+- The Release simulator bundle and unsigned device archive both build successfully.
+- The launch experience was repaired and visually verified on iPhone 17 Pro.
+- A signed archive requires Xcode to create or download a provisioning profile for
+  `com.chromafield.app`; that Apple-account mutation remains operator-gated.
 
-## Security hygiene flags (surfaced, not changed)
+## Remaining manual steps (require Apple credentials or product judgment)
 
-- `fastlane/Fastfile` hardcodes the ASC **Key ID** and **Issuer ID**. The `.p8`
-  private key is correctly *not* committed, but move these identifiers to fastlane's
-  env vars (`APP_STORE_CONNECT_API_KEY_*`) before this repo is public.
-- `.gitignore` has **no secret patterns** — add `*.p8` and `**/private_keys/`.
-- Root `PRIVACY.md` contains a personal email; consider routing support through the
-  GitHub issues URL only.
+1. **Capture the remaining screenshot set** — follow `screenshots.md`; the repaired
+   iPhone launch capture is present, while the iPad and composed feature shots remain.
+2. **Resolve the duplicate 1.0 version** in ASC (above).
+3. **Authorize provisioning, archive, validate, and upload the binary** in Xcode.
+4. **Confirm metadata + privacy + age rating** in ASC, then **Submit for Review**.
+
+## Security hygiene
+
+- Fastlane reads identifiers and key paths from ignored environment variables.
+- `.p8`, private-key directories, `.env` files, generated reports, and derived build
+  data are ignored.
+- Support routes through the public GitHub issues page; no personal email is stored.

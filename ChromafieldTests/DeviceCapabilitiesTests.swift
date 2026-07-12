@@ -46,4 +46,11 @@ final class DeviceCapabilitiesTests: XCTestCase {
             XCTAssertEqual(budget.targetFPS, 60, "All tiers must target 60 FPS")
         }
     }
+
+    func testCurrentSimulatorModelsUsePhoneBudgets() {
+        XCTAssertEqual(chipTier(forMachineIdentifier: "iPhone18,1"), .a18)
+        XCTAssertEqual(chipTier(forMachineIdentifier: "iPhone17,2"), .a18)
+        XCTAssertEqual(chipTier(forMachineIdentifier: "iPhone16,1"), .a17)
+        XCTAssertEqual(chipTier(forMachineIdentifier: "iPhone15,4"), .a16)
+    }
 }

@@ -1,6 +1,6 @@
 import UIKit
 
-enum ChipTier: Sendable {
+enum ChipTier: Sendable, Equatable {
     case m4
     case m3
     case m2
@@ -13,6 +13,13 @@ enum ChipTier: Sendable {
 }
 
 func detectChipTier() -> ChipTier {
+    #if targetEnvironment(simulator)
+    if let simulatedModel = ProcessInfo.processInfo.environment["SIMULATOR_MODEL_IDENTIFIER"] {
+        let tier = chipTier(forMachineIdentifier: simulatedModel)
+        if tier != .unknown { return tier }
+    }
+    #endif
+
     var size: Int = 0
     sysctlbyname("hw.machine", nil, &size, nil, 0)
     var machine = [CChar](repeating: 0, count: size)
@@ -21,19 +28,26 @@ func detectChipTier() -> ChipTier {
         String(cString: buffer.baseAddress!)
     }
 
-    if identifier.hasPrefix("iPad16") { return .m4 }
-    if identifier.hasPrefix("iPad15") { return .m3 }
-    if identifier.hasPrefix("iPad14") { return .m2 }
-    if identifier.hasPrefix("iPad13") { return .m1 }
-    if identifier.hasPrefix("iPhone17") { return .a18 }
-    if identifier.hasPrefix("iPhone16") { return .a17 }
-    if identifier.hasPrefix("iPhone15") { return .a16 }
+    let tier = chipTier(forMachineIdentifier: identifier)
+    if tier != .unknown { return tier }
 
     // Simulator on Apple Silicon returns "arm64" or Mac identifier
     if identifier == "arm64" || identifier.hasPrefix("Mac") {
         return .m1
     }
 
+    return .unknown
+}
+
+func chipTier(forMachineIdentifier identifier: String) -> ChipTier {
+    if identifier.hasPrefix("iPad16") { return .m4 }
+    if identifier.hasPrefix("iPad15") { return .m3 }
+    if identifier.hasPrefix("iPad14") { return .m2 }
+    if identifier.hasPrefix("iPad13") { return .m1 }
+    if identifier.hasPrefix("iPhone18") || identifier.hasPrefix("iPhone17") { return .a18 }
+    if identifier.hasPrefix("iPhone16") { return .a17 }
+    if identifier.hasPrefix("iPhone15") { return .a16 }
+    if identifier.hasPrefix("iPhone14") { return .a15 }
     return .unknown
 }
 

@@ -3,7 +3,7 @@ import MetalKit
 import simd
 import UIKit
 
-enum MetalEngineError: Error, CustomStringConvertible {
+enum MetalEngineError: Error, CustomStringConvertible, LocalizedError {
     case commandQueueCreationFailed
     case defaultLibraryNotFound
     case functionNotFound(String)
@@ -24,6 +24,8 @@ enum MetalEngineError: Error, CustomStringConvertible {
             "Render pipeline creation failed: \(detail)"
         }
     }
+
+    var errorDescription: String? { description }
 }
 
 @MainActor
@@ -534,9 +536,9 @@ final class MetalEngine: NSObject, MTKViewDelegate, ObservableObject {
         needsClearAccumulation = false
 
         if let renderEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: accDesc) {
-            // Fade pass: darken existing trails by 2%
+            // Fade trails quickly enough to preserve structure in dense fields.
             renderEncoder.setRenderPipelineState(fadePipeline)
-            var fadeAlpha: Float = 0.02
+            var fadeAlpha: Float = 0.08
             renderEncoder.setFragmentBytes(&fadeAlpha, length: MemoryLayout<Float>.stride, index: 0)
             renderEncoder.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: 3)
 
