@@ -1,12 +1,9 @@
 # Chromafield — App Store Screenshots (Manual Capture Checklist)
 
-> **Why manual:** automated simulator capture is blocked in the current
-> environment — Xcode 26.5 has the iOS **SDK** but no iOS **simulator runtime**
-> installed (`xcrun simctl list runtimes` is empty; the only build destinations are
-> unusable placeholders). Capture must be done after installing the iOS platform
-> (see the build-readiness note in the session report) or on a physical device.
-> Physical-device capture is recommended regardless — particle density and render
-> quality far exceed the simulator.
+> Xcode 26.5 and iOS Simulator 26.5 are installed. The repaired iPhone launch
+> capture has been refreshed from iPhone 17 Pro; the remaining composed iPhone
+> shots and all iPad shots still need capture. Physical-device review remains
+> recommended for Apple Pencil and sustained export performance.
 
 ## Required sizes (2026 App Store)
 
@@ -28,26 +25,24 @@ include.
 
 ## Capture procedure (per device)
 
-1. Install the iOS platform if needed: **Xcode → Settings → Components → iOS 26.5**
-   (or `xcodebuild -downloadPlatform iOS`).
-2. Boot the target simulator (or connect a physical device):
+1. Boot the target simulator (or connect a physical device):
    ```bash
    xcrun simctl boot "iPhone 16 Pro Max"   # or "iPad Pro 13-inch (M4)"
    open -a Simulator
    ```
-3. Build & install (signing off for simulator):
+2. Build & install (signing off for simulator):
    ```bash
    xcodebuild -scheme Chromafield -destination 'platform=iOS Simulator,name=iPhone 16 Pro Max' \
      -derivedDataPath /tmp/cf-dd build
    xcrun simctl install booted "$(find /tmp/cf-dd -name '*.app' -not -path '*/PlugIns/*' | head -1)"
    xcrun simctl launch booted com.chromafield.app
    ```
-4. Drive the app into each state below, let the simulation run **15–30 s** so trails
+3. Drive the app into each state below, let the simulation run **15–30 s** so trails
    build, then capture:
    ```bash
    xcrun simctl io booted screenshot screenshots/iphone-69/01-orbit.png
    ```
-5. Verify dimensions on every file — do not ship a mismatch:
+4. Verify dimensions on every file — do not ship a mismatch:
    ```bash
    sips -g pixelWidth -g pixelHeight screenshots/iphone-69/01-orbit.png
    # expect 1320 x 2868 (iPhone) / 2064 x 2752 (iPad)

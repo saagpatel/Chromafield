@@ -26,7 +26,9 @@ vertex ParticleVertexOut particleVertex(
         0.0,
         1.0
     );
-    out.pointSize = 6.0;
+    // Keep dense fields legible under additive blending. Large, fully opaque
+    // point sprites saturate the accumulation texture into white noise.
+    out.pointSize = 2.5;
     out.speed = p.speed;
     out.ageRatio = (p.lifetime > 0.0) ? clamp(p.age / p.lifetime, 0.0, 1.0) : 0.0;
 
@@ -57,7 +59,7 @@ fragment float4 particleFragment(
     float4 color1 = mix(palette[2], palette[3], t_age);
     float4 color = mix(color0, color1, t_speed);
 
-    return float4(color.rgb, color.a * alpha);
+    return float4(color.rgb, color.a * alpha * 0.12);
 }
 
 // MARK: - Full-Screen Fade Pipeline (Trail Accumulation)

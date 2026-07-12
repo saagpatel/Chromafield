@@ -107,10 +107,11 @@ as the next step. Text left unchanged.
 
 ---
 
-## Contradictions for Manual Review
+## Resolved Contradictions
 
-The following are drifts in `IMPLEMENTATION-ROADMAP.md`, which is outside the editable scope of
-this pass. A human should apply these corrections.
+The following drifts were identified by the original documentation-only pass and
+were corrected during the July 2026 release-hardening pass. They remain listed as
+historical reconciliation evidence.
 
 ### 1. `IMPLEMENTATION-ROADMAP.md:96–103` — Particle struct sample includes `float4 color` that does not exist
 

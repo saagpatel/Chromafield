@@ -85,8 +85,11 @@ https://github.com/saagpatel/Chromafield/blob/main/PRIVACY.md
 ## Screenshots
 
 ### Required Sizes
-- **12.9" iPad Display** — 2048 × 2732 px (iPad Pro 12.9") — **required for universal app**
-- **6.7" Display** — 1290 × 2796 px (iPhone 16 Pro Max / iPhone 15 Pro Max)
+- **13" iPad Display** — 2064 × 2752 px (portrait)
+- **6.9" iPhone Display** — 1320 × 2868 px (portrait)
+
+These dimensions match Apple's current screenshot specification:
+https://developer.apple.com/help/app-store-connect/reference/app-information/screenshot-specifications/
 
 ### Screenshot Plan (4 screenshots per size)
 
@@ -98,13 +101,13 @@ https://github.com/saagpatel/Chromafield/blob/main/PRIVACY.md
 | 4 | Export Controls sheet | "Save Image" and "Record Loop" rows visible; a stunning Void palette crystallization config visible in the background canvas | "Export your art. 2× resolution PNG or 60fps MP4." |
 
 ### How to Take Screenshots
-1. Open Xcode → Simulator → select iPad Pro 12.9" (or iPhone 16 Pro Max for phone size)
+1. Open Xcode → Simulator → select iPad Pro 13-inch (or iPhone 16 Pro Max for phone size)
 2. Build and run the Chromafield target
 3. Load a preset or place nodes manually to create a visually compelling state
 4. Let the simulation run for 15–30 seconds so trails build up
 5. **Xcode menu: Product → Simulator → Take Screenshot** (saves to Desktop)
    OR: `xcrun simctl io booted screenshot ~/Desktop/screenshot.png`
-6. Repeat for iPhone 16 Pro Max (6.7") by switching simulator
+6. Repeat for iPhone 16 Pro Max (6.9") by switching simulator
 7. Add marketing text overlays in Sketch, Figma, or Canva before uploading
 
 *Note: For the most compelling screenshots, use a physical iPad Pro with Apple Pencil — the particle density and rendering quality is significantly better than the simulator.*
@@ -142,10 +145,10 @@ No reviewer account, credentials, or network connectivity required.
 - [ ] App icon 1024×1024 appears correctly in Xcode asset catalog (no warnings)
 - [ ] `NSPhotoLibraryAddUsageDescription` in Info.plist: "Chromafield saves your particle art to your photo library."
 - [ ] No network entitlements declared in entitlements file
-- [ ] `PrivacyInfo.xcprivacy` present — no data collected, no tracking, Photo Library API declared
+- [x] `PrivacyInfo.xcprivacy` present — no data collected, no tracking, and no required-reason APIs used
 - [ ] Archive succeeds: `Product → Archive` with no errors
 - [ ] Validate App passes with 0 errors
-- [ ] All 8 screenshots uploaded (4 per required size: iPad 12.9" + iPhone 6.7")
+- [ ] All 8 screenshots uploaded (4 per required size: iPad 13" + iPhone 6.9")
 - [ ] Description, keywords, subtitle filled in App Store Connect
 - [ ] Price set to Free in Pricing and Availability
 - [ ] Age rating questionnaire complete (4+)

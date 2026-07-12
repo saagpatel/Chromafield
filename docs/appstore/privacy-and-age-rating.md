@@ -55,20 +55,14 @@ transmitted off-device, linked to the user, or used for tracking.
 
 ## Export Compliance (encryption)
 
-**`ITSAppUsesNonExemptEncryption` is not set in `project.yml` / Info.plist.** The app
-uses no encryption beyond OS-standard system functionality (it makes no network
-calls at all).
+**`ITSAppUsesNonExemptEncryption` is set to `false` in `project.yml`.** The app uses
+no encryption beyond OS-standard system functionality (it makes no network calls).
 
 **Answer the App Store Connect export-compliance question: "Does your app use
 encryption?" → `No`.**
 
-To suppress the per-build prompt permanently, add one line to `project.yml` settings
-(then `xcodegen generate`):
-```yaml
-INFOPLIST_KEY_ITSAppUsesNonExemptEncryption: false
-```
-*(Left as a flagged step — not applied here, because it requires regenerating the
-Xcode project and a build to verify, which needs the iOS platform installed.)*
+The generated Xcode project and Release bundle have been regenerated and verified
+with this value.
 
 ---
 

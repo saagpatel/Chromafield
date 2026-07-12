@@ -121,7 +121,7 @@ struct ExportControls: View {
 
     private func exportVideo() async {
         do {
-            _ = try await videoExporter.export(
+            try await videoExporter.export(
                 engine: engine,
                 budget: budget,
                 screenSize: screenSize
