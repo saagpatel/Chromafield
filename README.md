@@ -10,7 +10,7 @@ A GPU-accelerated particle field canvas for iPhone and iPad. Place field nodes w
 
 - **Metal compute pipeline** — all particle physics (force evaluation, velocity integration) runs on the GPU
 - **Four particle behaviors** — Flock, Diffuse, Crystal, Orbit — each producing distinct emergent patterns
-- **Field nodes** — tap or draw to place attractor/repulsor nodes; long-press for a radial type menu
+- **Field nodes** — tap to place attractors, draw with Apple Pencil to place and move an attractor; long-press for a radial type menu
 - **Apple Pencil support** — force, azimuth, and altitude mapped to field node parameters
 - **Adaptive quality** — particle budget scales from 20,000 (A15) to 200,000 (M4) based on chip tier
 - **Export** — still PNG via `PHPhotoLibrary`; MP4 video via `AVAssetWriter` through an offscreen Metal pass

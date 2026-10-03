@@ -33,7 +33,7 @@ include.
 2. Build & install (signing off for simulator):
    ```bash
    xcodebuild -scheme Chromafield -destination 'platform=iOS Simulator,name=iPhone 16 Pro Max' \
-     -derivedDataPath /tmp/cf-dd build
+     -derivedDataPath /tmp/cf-dd CODE_SIGNING_ALLOWED=NO build
    xcrun simctl install booted "$(find /tmp/cf-dd -name '*.app' -not -path '*/PlugIns/*' | head -1)"
    xcrun simctl launch booted com.chromafield.app
    ```

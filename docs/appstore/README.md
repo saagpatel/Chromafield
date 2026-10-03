@@ -2,7 +2,7 @@
 
 Everything needed to submit Chromafield v1.0, prepared up to the point that requires
 the Xcode GUI / your Apple credentials. All product claims are verified against the
-shipping source; all files are sanitized (no email, API keys, UUIDs, or local paths).
+shipping source; all files are sanitized (no email, API keys, UUIDs, or personal local paths).
 
 ## Contents
 
