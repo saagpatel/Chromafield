@@ -31,7 +31,47 @@ xcodegen generate
 open Chromafield.xcodeproj
 ```
 
-For command-line verification, run `make build` and `make test`.
+### Verification
+
+Run from the repository root. Build and test require macOS with the full Xcode
+16+ developer directory selected; Command Line Tools alone cannot run the iOS
+Simulator lane. Tests also require an installed, available iPhone simulator
+runtime compatible with the iOS 17 deployment target. `make test` selects the
+first available iPhone simulator and can boot it and create test app data.
+
+```sh
+make build   # regenerate with XcodeGen, then build Debug for iOS Simulator
+make test    # regenerate, then run the ChromafieldTests suite
+```
+
+For a focused model test, generate the project and supply an available iPhone
+simulator's UDID in place of `AVAILABLE_IPHONE_UDID`:
+
+```sh
+xcodegen generate
+xcodebuild test -project Chromafield.xcodeproj -scheme Chromafield \
+  -destination 'platform=iOS Simulator,id=AVAILABLE_IPHONE_UDID' \
+  -only-testing:ChromafieldTests/FieldNodeModelTests CODE_SIGNING_ALLOWED=NO
+```
+
+[CI](.github/workflows/ci.yml) also validates release resources and builds the
+Release configuration. The resource-only lane needs macOS `plutil` and `jq` and
+does not launch the app:
+
+```sh
+plutil -lint Chromafield/Resources/PrivacyInfo.xcprivacy
+plutil -lint ExportOptions.plist
+jq -s -e 'length == 6' Chromafield/Resources/Presets/*.json >/dev/null
+```
+
+There is no separate configured Swift lint or format command. For changed canvas,
+input or export behavior, check the affected flow on a simulator and, where Metal
+performance or Apple Pencil matters, an appropriate device. Browser checks do
+not exercise this native app. Device runs and exports can write app/Photos data;
+use disposable test data when those checks are in scope. Documentation-only
+changes do not require launching the app. Simulator tests do not establish device
+performance or Photos export acceptance; signing, archive and App Store export
+are separate delivery operations.
 
 ### Usage
 Build and run on a physical device for full GPU performance. Tap the canvas to place field nodes and use the behavior strip to switch particle modes.
