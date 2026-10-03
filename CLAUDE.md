@@ -17,9 +17,9 @@ Build and run on a physical device for full GPU performance. See IMPLEMENTATION-
 
 ## Gotchas
 
-**Canvas input:** All touch and Apple Pencil input goes through UIGestureRecognizer on the UIView layer. SwiftUI and MTKView fight over touch; UIKit wins. Never route canvas gestures through SwiftUI.
+**Canvas input:** Canvas gestures use UIGestureRecognizer on the UIKit layer; Apple Pencil input uses MetalCanvasView touch overrides routed to PencilInputHandler. SwiftUI and MTKView fight over touch; UIKit wins. Never route canvas gestures through SwiftUI.
 
-**Flocking performance:** Use spatial grid hash + two-pass compute. O(n²) neighbor scan is too slow at particle counts this app targets.
+**Flocking performance:** Use spatial grid hash with clearGrid, buildNeighborGrid, and updateParticles compute dispatches. O(n²) neighbor scan is too slow at particle counts this app targets.
 
 **Video export:** Use the offline OffscreenRenderer path — pause the sim, render N frames to AVAssetWriter. Recording live simulation frames races the sim and causes memory spikes.
 
@@ -43,8 +43,8 @@ Build and run on a physical device for full GPU performance. See IMPLEMENTATION-
 | Export resolution | PNG: 2× on M-series + A17/A18; 1× on A15/A16/unknown; Video: 2× on M-series iPad, 1× otherwise | 4× risks OOM on iPhone; safe default confirmed |
 | Canvas simulation resolution | Screen resolution always; export renders to offscreen texture | Interactivity requires screen-res simulation |
 | Video export strategy | Non-realtime: pause sim, render N frames offline to AVAssetWriter | Avoids racing live simulation, prevents memory spikes |
-| Gesture ownership | UIKit layer only — UIGestureRecognizer on underlying UIView | SwiftUI and MTKView fight over touch; UIKit wins |
-| Persistence | JSON in Documents/configs/ | Field configs are < 5KB; JSON is debuggable; SQLite is overkill |
+| Gesture ownership | UIKit layer only — UIGestureRecognizer for gestures; MetalCanvasView touch overrides for Pencil | SwiftUI and MTKView fight over touch; UIKit wins |
+| Persistence | JSON in Documents/configs/ | Configs include optional PNG thumbnail data and have no fixed size limit; JSON is debuggable |
 | Deployment target | iOS 17.0 | Metal 3 + SwiftUI + UIKit interop all stable at 17 |
 | GIF export | Deferred to v2 | Palette quantization rabbit hole; MP4 covers sharing use case |
 
@@ -76,8 +76,8 @@ Build and run on a physical device for full GPU performance. Tap the canvas to p
 
 ## Known Risks
 
-- Do not use SwiftUI gestures on the canvas — all touch/Pencil input goes through UIGestureRecognizer on the UIView layer
-- Do not attempt O(n²) neighbor scan for Flocking — use spatial grid hash + two-pass compute
+- Do not use SwiftUI gestures on the canvas — canvas gestures use UIGestureRecognizer; Pencil input uses MetalCanvasView touch overrides
+- Do not attempt O(n²) neighbor scan for Flocking — use spatial grid hash with clearGrid, buildNeighborGrid, and updateParticles compute dispatches
 - Do not record live simulation frames for video export — use the offline OffscreenRenderer path
 - Do not request network entitlements — this app is fully offline, no exceptions
 - Do not add v2 features (audio, time-varying fields, GIF export, 4× resolution) during the v1 build
