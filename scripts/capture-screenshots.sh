@@ -99,6 +99,12 @@ while IFS=$'\t' read -r id slug width height state; do
     output="$ROOT/screenshots/appstore/$slug"
     mkdir -p "$output"
 
+    # Prime the launch history so shot 1 has no cross-app status-bar back link.
+    xcrun simctl terminate "$id" "$bundle_id" >/dev/null 2>&1 || true
+    xcrun simctl launch "$id" "$bundle_id" -AppStoreScreenshot 1
+    sleep 2
+    xcrun simctl terminate "$id" "$bundle_id" >/dev/null 2>&1 || true
+
     for n in 1 2 3 4; do
         # terminate returns nonzero when the app is already stopped.
         xcrun simctl terminate "$id" "$bundle_id" >/dev/null 2>&1 || true
