@@ -80,6 +80,56 @@ final class MetalEngine: NSObject, MTKViewDelegate, ObservableObject {
     // External references
     var fieldManager: FieldManager?
 
+    #if DEBUG
+    private var appStoreScreenshotNumber: Int?
+    private var appStoreScreenshotFrames = 0
+    private let appStoreScreenshotFrameLimit = 240
+    private var appStoreScreenshotOnReady: (() -> Void)?
+
+    func prepareAppStoreScreenshot(number: Int, onReady: @escaping () -> Void) {
+        appStoreScreenshotNumber = number
+        appStoreScreenshotOnReady = onReady
+        resetAppStoreScreenshotParticles()
+    }
+
+    private func resetAppStoreScreenshotParticles() {
+        for buffer in particleBuffers {
+            buffer.seedForAppStoreScreenshot(seed: 0x4348524F4D41)
+        }
+        frameIndex = 0
+        appStoreScreenshotFrames = 0
+        simParams.deltaTime = 1.0 / 60.0
+        needsClearAccumulation = true
+    }
+
+    /// Present the completed real trail texture without advancing or fading it.
+    private func drawFrozenAppStoreScreenshot(in view: MTKView) {
+        guard let texture = accumulationTexture,
+              let pipeline = blitPipelineState,
+              let drawable = view.currentDrawable,
+              let commandBuffer = commandQueue.makeCommandBuffer() else {
+            bufferSemaphore.signal()
+            return
+        }
+        let descriptor = MTLRenderPassDescriptor()
+        descriptor.colorAttachments[0].texture = drawable.texture
+        descriptor.colorAttachments[0].loadAction = .dontCare
+        descriptor.colorAttachments[0].storeAction = .store
+        guard let encoder = commandBuffer.makeRenderCommandEncoder(descriptor: descriptor) else {
+            bufferSemaphore.signal()
+            return
+        }
+        encoder.setRenderPipelineState(pipeline)
+        encoder.setFragmentTexture(texture, index: 0)
+        encoder.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: 3)
+        encoder.endEncoding()
+        let semaphore = bufferSemaphore
+        commandBuffer.addCompletedHandler { _ in semaphore.signal() }
+        commandBuffer.present(drawable)
+        commandBuffer.commit()
+    }
+    #endif
+
     // MARK: - Backward compatibility for tests
 
     var particleBuffer: ParticleBuffer {
@@ -267,6 +317,12 @@ final class MetalEngine: NSObject, MTKViewDelegate, ObservableObject {
 
         accumulationTexture = device.makeTexture(descriptor: desc)
         needsClearAccumulation = true
+        #if DEBUG
+        if appStoreScreenshotNumber != nil {
+            // A layout change must rebuild the same composition at the new size.
+            resetAppStoreScreenshotParticles()
+        }
+        #endif
     }
 
     func clearAccumulationTexture() {
@@ -292,6 +348,9 @@ final class MetalEngine: NSObject, MTKViewDelegate, ObservableObject {
     // MARK: - Adaptive Quality
 
     private func recordFrameTime(_ ms: Double) {
+        #if DEBUG
+        if appStoreScreenshotNumber != nil { return }
+        #endif
         guard !isExporting else { return }
         frameBudgetMonitor.push(ms)
         if frameBudgetMonitor.isOverBudget {
@@ -486,6 +545,21 @@ final class MetalEngine: NSObject, MTKViewDelegate, ObservableObject {
     }
 
     private func drawFrame(in view: MTKView) {
+        #if DEBUG
+        if appStoreScreenshotNumber != nil {
+            // Count only rendered frames; missing drawables must not advance data.
+            guard view.drawableSize.width > 0, view.drawableSize.height > 0,
+                  view.currentDrawable != nil else {
+                bufferSemaphore.signal()
+                return
+            }
+            ensureAccumulationTexture(size: view.drawableSize)
+            if appStoreScreenshotFrames >= appStoreScreenshotFrameLimit {
+                drawFrozenAppStoreScreenshot(in: view)
+                return
+            }
+        }
+        #endif
         frameIndex = (frameIndex + 1) % 3
         let currentBuffer = particleBuffers[frameIndex]
 
@@ -571,5 +645,16 @@ final class MetalEngine: NSObject, MTKViewDelegate, ObservableObject {
 
         commandBuffer.present(drawable)
         commandBuffer.commit()
+        #if DEBUG
+        if appStoreScreenshotNumber != nil {
+            // Serial completion makes buffer reuse and the readiness signal explicit.
+            commandBuffer.waitUntilCompleted()
+            guard commandBuffer.status == .completed else { return }
+            appStoreScreenshotFrames += 1
+            if appStoreScreenshotFrames == appStoreScreenshotFrameLimit {
+                appStoreScreenshotOnReady?()
+            }
+        }
+        #endif
     }
 }

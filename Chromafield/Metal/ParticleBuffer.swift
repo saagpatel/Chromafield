@@ -46,4 +46,30 @@ final class ParticleBuffer {
     var pointer: UnsafeMutablePointer<Particle> {
         buffer.contents().bindMemory(to: Particle.self, capacity: count)
     }
+
+    #if DEBUG
+    /// Fixed integer arithmetic and 24-bit fractions keep launch data repeatable.
+    func seedForAppStoreScreenshot(seed: UInt64) {
+        var state = seed
+        func nextUnit() -> Float {
+            state = state &* 6364136223846793005 &+ 1442695040888963407
+            return Float(state >> 40) / 16_777_216
+        }
+
+        for i in 0..<count {
+            let x = nextUnit()
+            let y = nextUnit()
+            let lifetime = 120 + nextUnit() * 480
+            let age = nextUnit() * lifetime
+            pointer[i] = Particle(
+                position: simd_float2(x, y),
+                velocity: simd_float2(0, 0),
+                age: age,
+                lifetime: lifetime,
+                speed: 0,
+                padding: 0
+            )
+        }
+    }
+    #endif
 }
