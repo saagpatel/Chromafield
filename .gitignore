@@ -37,3 +37,7 @@ Pods/
 
 # distribution-kit lane receipts
 dist-receipts/
+
+# Reproducible simulator screenshots and their Debug build
+screenshots/appstore/
+.build/shots/

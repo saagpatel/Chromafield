@@ -6,6 +6,37 @@ import simd
 @MainActor
 final class SimulationTests: XCTestCase {
 
+    #if DEBUG
+    func testAppStoreScreenshotSeedReplaysCompleteParticleState() throws {
+        guard let device = MTLCreateSystemDefaultDevice() else {
+            throw XCTSkip("No Metal device available")
+        }
+        let buffer = try ParticleBuffer(device: device, count: 1024)
+        buffer.seedForAppStoreScreenshot(seed: 0x4348524F4D41)
+        let expected = Data(bytes: buffer.buffer.contents(), count: buffer.buffer.length)
+
+        // Reseeding must replace every field, even after state has been modified.
+        buffer.pointer[0].position = simd_float2(-1, -1)
+        buffer.pointer[0].velocity = simd_float2(1, 1)
+        buffer.seedForAppStoreScreenshot(seed: 0x4348524F4D41)
+        XCTAssertEqual(Data(bytes: buffer.buffer.contents(), count: buffer.buffer.length), expected)
+
+        for i in 0..<buffer.count {
+            let particle = buffer.pointer[i]
+            XCTAssertTrue((0..<1).contains(particle.position.x))
+            XCTAssertTrue((0..<1).contains(particle.position.y))
+            XCTAssertTrue((120...600).contains(particle.lifetime))
+            XCTAssertTrue((0..<particle.lifetime).contains(particle.age))
+            XCTAssertEqual(particle.velocity, simd_float2(0, 0))
+            XCTAssertEqual(particle.speed, 0)
+            XCTAssertEqual(particle.padding, 0)
+        }
+
+        buffer.seedForAppStoreScreenshot(seed: 1)
+        XCTAssertNotEqual(Data(bytes: buffer.buffer.contents(), count: buffer.buffer.length), expected)
+    }
+    #endif
+
     // MARK: - Struct Size Assertions
 
     func testParticleSizeIs32Bytes() {

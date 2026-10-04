@@ -93,18 +93,20 @@ Both sizes are required for this submission. `project.yml` declares `TARGETED_DE
 
 ### Screenshot Plan (4 screenshots per size)
 
-| # | Screen | Capture State | Headline Overlay |
-|---|--------|-----------------|------------------|
-| 1 | Launch canvas | Nebula loaded; actual particles, HUD node count, and bottom toolbar visible | "Place forces. Watch particles respond." |
-| 2 | Behavior sheet | Tap "Behavior"; show the actual Flock, Diffuse, Crystal, and Orbit rows and selected checkmark | "Choose how particles move." |
-| 3 | Gallery sheet | Tap "Presets"; show the six named presets with their palette-gradient placeholders. Use a fresh install with "No saved configurations yet" in the Saved section; scroll if needed | "Start with one of six presets." |
-| 4 | Export sheet | Tap "Export"; show the actual "Save Image" and "Record Loop" rows with the build's captions | "Save a PNG or a 10-second MP4." |
+| n (`-AppStoreScreenshot`) | Screen | Capture State | Device Sizes (portrait) | Capture Route | Headline Overlay |
+|---|--------|-----------------|-------------------------|---------------|------------------|
+| 1 | Launch canvas | Nebula loaded; actual particles, HUD node count, and bottom toolbar visible | 6.9-inch iPhone 1320x2868; 13-inch iPad 2064x2752 | Simulator | "Place forces. Watch particles respond." |
+| 2 | Behavior sheet | Open the medium-height "Behavior" sheet; show the actual Flock, Diffuse, Crystal, and Orbit rows with Diffuse selected and the Nebula canvas visible around it | 6.9-inch iPhone 1320x2868; 13-inch iPad 2064x2752 | Simulator | "Choose how particles move." |
+| 3 | Orbit canvas | Gold Rush preset: Orbit behavior with Forge palette; full canvas with developed gold trails, HUD, and bottom toolbar | 6.9-inch iPhone 1320x2868; 13-inch iPad 2064x2752 | Simulator | "Set particles into orbit." |
+| 4 | Flock canvas | Solar Wind preset with Ocean palette selected: Flock behavior; full canvas with developed cyan trails, HUD, and bottom toolbar | 6.9-inch iPhone 1320x2868; 13-inch iPad 2064x2752 | Simulator | "Watch a flock take shape." |
+
+All four states are simulator-capturable using the real Metal canvas and one existing sheet. The same states apply to iPhone and iPad. No `OPERATOR: capture on device` rows are needed for this plan.
 
 ### How to Take Screenshots
-1. Run the submission build on an iPhone and iPad, or matching simulators with Metal available.
-2. Capture the four states above in portrait. The gallery scrolls; show its actual visible content rather than combining screens into an invented layout.
-3. Confirm the phone captures are 1320x2868 and the iPad captures are 2064x2752 before uploading.
-4. Add the headline overlays without changing the app content. Use the captured particle field; do not invent rings, ribbons, preset previews, or particle counts.
+1. On a Mac with full Xcode and Metal-capable simulators named exactly `iPhone 18 Pro Max` and `iPad Pro 13-inch (M5)`, run `scripts/capture-screenshots.sh`. When multiple installed iOS runtimes have that name, the script selects the newest available runtime. It builds Debug once without signing, reads the built bundle ID, installs, sets dark appearance and a 9:41 status bar, and captures all four states per device. Before shot 1 on each device, it launches the app, waits 2 seconds, and terminates it to clear the cross-app status-bar back link. Release has no screenshot launch mode; compare the captured UI with the submission build before uploading.
+2. Debug screenshot mode uses the bundled presets above (including their fixed IDs and creation dates), a fixed particle seed, and the device's normal launch budget with adaptive reduction disabled. It renders 240 frames for shots 1–2 and 720 frames for shots 3–4 at a fixed 1/60-second simulation step before freezing the actual trail texture. The script waits for the app's warm-up marker, then settles for 8 seconds for shot 1 and 4 seconds for other shots. Override a wait with `SHOT_1_WAIT=12` (or `SHOT_2_WAIT`, `SHOT_3_WAIT`, `SHOT_4_WAIT`); `READY_TIMEOUT` defaults to 120 seconds, and `DERIVED` defaults to `.build/shots`. No onboarding or permissions are requested in these launch/sheet paths.
+3. Raw PNGs are written to `screenshots/appstore/iphone-18-pro-max/01.png` through `04.png` and `screenshots/appstore/ipad-pro-13-inch-m5/01.png` through `04.png`. The script checks every PNG with `sips`, fails on a size mismatch, clears its status bar overrides even on failure, and shuts down only simulators it booted. Review all three full-canvas compositions and the Behavior sheet with canvas visible around it; confirm the distinct Orbit and Flock trails on both devices.
+4. Add the headline overlays without changing the app content. Use the captured particle field; do not invent rings, ribbons, preset previews, or particle counts. Generated PNGs and screenshot build output are ignored by Git and are not committed.
 
 Simulator captures show that simulator's output. They do not establish physical-device performance or Apple Pencil input.
 

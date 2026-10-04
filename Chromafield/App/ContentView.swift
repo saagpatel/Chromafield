@@ -21,6 +21,30 @@ struct ContentView: View {
     @State private var showCanvasSettings = false
     @State private var presentedError: PresentedError?
 
+    #if DEBUG
+    private var appStoreScreenshotNumber: Int? {
+        let arguments = ProcessInfo.processInfo.arguments
+        guard let index = arguments.firstIndex(of: "-AppStoreScreenshot"),
+              arguments.indices.contains(index + 1),
+              let number = Int(arguments[index + 1]), (1...4).contains(number) else {
+            return nil
+        }
+        return number
+    }
+
+    private func presentAppStoreScreenshot(number: Int) {
+        if number == 2 { showBehaviorPicker = true }
+        // The capture script waits for real Metal warm-up, then for sheet animation.
+        let marker = FileManager.default.temporaryDirectory
+            .appendingPathComponent("appstore-screenshot-ready")
+        do {
+            try String(number).write(to: marker, atomically: true, encoding: .utf8)
+        } catch {
+            present(error, title: "Couldn’t Prepare Screenshot")
+        }
+    }
+    #endif
+
     private struct PresentedError: Identifiable {
         let id = UUID()
         let title: String
@@ -299,6 +323,34 @@ struct ContentView: View {
         if let launchPreset = presets.first(where: { $0.name == "Nebula" }) ?? presets.first {
             loadConfig(launchPreset)
         }
+        #if DEBUG
+        if let number = appStoreScreenshotNumber {
+            if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+                scene.requestGeometryUpdate(.iOS(interfaceOrientations: .portrait)) { error in
+                    present(error, title: "Couldn’t Prepare Screenshot")
+                }
+            }
+            let presetName: String
+            switch number {
+            case 3: presetName = "Gold Rush"
+            case 4: presetName = "Solar Wind"
+            default: presetName = "Nebula"
+            }
+            guard presets.count == 6,
+                  var screenshotConfig = presets.first(where: { $0.name == presetName }) else {
+                presentMessage("Screenshot mode requires all six bundled presets.",
+                               title: "Couldn’t Prepare Screenshot")
+                return
+            }
+            // These are ordinary preset and palette selections, reachable from the toolbar.
+            // Bundled presets already contain fixed IDs and a fixed creation date.
+            if number == 4 { screenshotConfig.paletteIndex = 5 } // Ocean
+            loadConfig(screenshotConfig)
+            newEngine.prepareAppStoreScreenshot(number: number) {
+                presentAppStoreScreenshot(number: number)
+            }
+        }
+        #endif
     }
 
     // MARK: - Config Actions
