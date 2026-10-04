@@ -33,12 +33,7 @@ struct ContentView: View {
     }
 
     private func presentAppStoreScreenshot(number: Int) {
-        switch number {
-        case 2: showBehaviorPicker = true
-        case 3: showPresetGallery = true
-        case 4: showExportControls = true
-        default: break
-        }
+        if number == 2 { showBehaviorPicker = true }
         // The capture script waits for real Metal warm-up, then for sheet animation.
         let marker = FileManager.default.temporaryDirectory
             .appendingPathComponent("appstore-screenshot-ready")
@@ -335,14 +330,22 @@ struct ContentView: View {
                     present(error, title: "Couldn’t Prepare Screenshot")
                 }
             }
-            guard presets.count == 6, presets.contains(where: { $0.name == "Nebula" }) else {
+            let presetName: String
+            switch number {
+            case 3: presetName = "Gold Rush"
+            case 4: presetName = "Solar Wind"
+            default: presetName = "Nebula"
+            }
+            guard presets.count == 6,
+                  var screenshotConfig = presets.first(where: { $0.name == presetName }) else {
                 presentMessage("Screenshot mode requires all six bundled presets.",
                                title: "Couldn’t Prepare Screenshot")
                 return
             }
-            // Match a fresh install without deleting any user configurations.
+            // These are ordinary preset and palette selections, reachable from the toolbar.
             // Bundled presets already contain fixed IDs and a fixed creation date.
-            self.savedConfigs = []
+            if number == 4 { screenshotConfig.paletteIndex = 5 } // Ocean
+            loadConfig(screenshotConfig)
             newEngine.prepareAppStoreScreenshot(number: number) {
                 presentAppStoreScreenshot(number: number)
             }

@@ -83,11 +83,13 @@ final class MetalEngine: NSObject, MTKViewDelegate, ObservableObject {
     #if DEBUG
     private var appStoreScreenshotNumber: Int?
     private var appStoreScreenshotFrames = 0
-    private let appStoreScreenshotFrameLimit = 240
+    private var appStoreScreenshotFrameLimit = 240
     private var appStoreScreenshotOnReady: (() -> Void)?
 
     func prepareAppStoreScreenshot(number: Int, onReady: @escaping () -> Void) {
         appStoreScreenshotNumber = number
+        // Preserve Nebula's reviewed timing; let Orbit and Flock develop longer.
+        appStoreScreenshotFrameLimit = number >= 3 ? 720 : 240
         appStoreScreenshotOnReady = onReady
         resetAppStoreScreenshotParticles()
     }
