@@ -21,18 +21,18 @@ Store settings above are submission targets. Confirm them in App Store Connect b
 ## Keywords
 
 ```
-generative art,particles,Metal,creative,art,drawing,animation,abstract,instrument,Apple Pencil
+generative art,particles,physics,flocking,creative,drawing,animation,abstract,visualizer,pencil
 ```
 
-*(100 character limit; 94 characters)*
+*(100 character limit; 95 characters)*
 
 ---
 
 ## Description
 
-Chromafield is a particle art instrument. Place attractors, repellers, vortices, and chaos nodes on a canvas. Watch particles respond to the forces you place. Start with a preset, change its colors and behavior, and make a composition of your own.
+Chromafield is a particle art instrument. Place Attract, Repel, Vortex, and Chaos nodes on a canvas, and thousands of particles pull toward, scatter from, and swirl around them. Start with a preset, change its colors and behavior, and make a composition of your own.
 
-Built on Metal, Chromafield simulates particles that pull together, scatter, and turn around field nodes.
+Particles leave trails that fade behind them as your forces move them.
 
 **Four particle behaviors:**
 • **Flock:** nearby particles influence one another's motion
@@ -44,21 +44,20 @@ Built on Metal, Chromafield simulates particles that pull together, scatter, and
 Ember, Glacial, Void, Toxic, Dusk, Ocean, Mono, and Forge. Particle colors vary with speed and age.
 
 **Four field node types:**
-• Attractor: pulls particles toward a point
-• Repeller: pushes particles away from a point
+• Attract: pulls particles toward a point
+• Repel: pushes particles away from a point
 • Vortex: applies a turning force
 • Chaos: adds turbulence
 
 **Save, load, export:**
-• Save field configurations and reload them later
+• Save your setups and reload them later
 • 6 bundled presets to explore: Nebula, Crystal Web, Solar Wind, Void Dance, Toxic Storm, Gold Rush
 • Export a PNG to your photo library
-• Export a 10-second MP4 at 60fps, rendered offline
-• Exports show particles without field node overlays
+• Export a 10-second MP4 at 60fps, rendered frame by frame rather than screen-recorded
 
-**No accounts. No ads. No subscriptions.** Chromafield works offline. It saves configurations in the app's local storage and does not upload them.
+No accounts, ads, or subscriptions. Chromafield works offline and saves your setups in the app's local storage.
 
-Use finger gestures on iPhone and iPad to place nodes. On a compatible iPad, draw with Apple Pencil to place and move an attractor. With a pressure-sensitive Pencil, pressure changes its strength.
+Place nodes with a finger on iPhone or iPad. On a compatible iPad, Apple Pencil places an Attract node and drags it across the canvas; with a pressure-sensitive Pencil, pressing harder makes it stronger.
 
 ---
 
@@ -67,7 +66,7 @@ Use finger gestures on iPhone and iPad to place nodes. On a compatible iPad, dra
 *(Optional; appears above the description)*
 
 ```
-Place forces. Watch particles respond. Export the art. Metal-powered generative art instrument for iPhone and iPad.
+Drop Attract, Repel, and Vortex nodes on a canvas and watch thousands of particles bend around them. Save the result as a PNG or a 10-second MP4. iPhone and iPad.
 ```
 
 ---
@@ -96,7 +95,7 @@ Both sizes are required for this submission. `project.yml` declares `TARGETED_DE
 
 | # | Screen | Capture State | Headline Overlay |
 |---|--------|-----------------|------------------|
-| 1 | Launch canvas | Nebula loaded; actual particles, field nodes, and bottom toolbar visible | "Place forces. Watch particles respond." |
+| 1 | Launch canvas | Nebula loaded; actual particles, HUD node count, and bottom toolbar visible | "Place forces. Watch particles respond." |
 | 2 | Behavior sheet | Tap "Behavior"; show the actual Flock, Diffuse, Crystal, and Orbit rows and selected checkmark | "Choose how particles move." |
 | 3 | Gallery sheet | Tap "Presets"; show the six named presets with their palette-gradient placeholders. Use a fresh install with "No saved configurations yet" in the Saved section; scroll if needed | "Start with one of six presets." |
 | 4 | Export sheet | Tap "Export"; show the actual "Save Image" and "Record Loop" rows with the build's captions | "Save a PNG or a 10-second MP4." |
@@ -119,15 +118,17 @@ It requests add-only Photo Library permission when an export is triggered, not a
 
 To test the core flow:
 1. Launch the app. The canvas starts with the bundled Nebula configuration.
-2. Tap an open area of the canvas to add an attractor.
-3. Long-press the canvas, release, then tap "Vortex" in the radial menu.
-   This adds the vortex at the long-press position. A normal tap adds an attractor.
+2. Tap an open area of the canvas to add an Attract node.
+3. Long-press the canvas to open the radial menu, then tap "Vortex".
+   This adds the Vortex node at the long-press position. A normal tap adds an Attract node.
    The other menu labels are "Attract", "Repel", and "Chaos".
 4. Tap "Palette" in the bottom toolbar, then tap a palette swatch.
    Tap "Palette" again to close the selector.
 5. Tap "Behavior", then choose "Flock", "Diffuse", "Crystal", or "Orbit".
    The sheet closes after selection.
-6. Tap "Save" to save the current configuration. Tap "Presets" to open "Gallery".
+6. Tap "Save" to save the current configuration.
+   Save shows no confirmation; the entry appears under Saved in Gallery.
+   Tap "Presets" to open "Gallery".
    Tap the saved configuration under "Saved" to load it and close the sheet.
 7. Tap "Export", then "Save Image". Allow adding to Photos when prompted.
    A successful export shows "Exported" and "Saved to your photo library."
@@ -142,10 +143,10 @@ To load a preset:
 2. In "Gallery", tap "Nebula" under "Presets". The sheet closes and loads the configuration.
    Bundled preset tiles use palette gradients, not rendered previews.
 
-Finger input supports the steps above. Drawing to move an attractor uses Apple Pencil
+Finger input supports the steps above. Drawing to move an Attract node uses Apple Pencil
 on a compatible iPad. Pressure control needs a pressure-sensitive Pencil.
 A simulator cannot demonstrate Pencil pressure. Particle count and appearance depend
-on the device and running simulation; specific rings or ribbons are not guaranteed.
+on the device and running simulation.
 Metal is required. If unavailable, the app shows "Metal Unavailable" instead of a canvas.
 Review from any location: the app does not request or use location.
 No reviewer account or credentials are required.
@@ -169,8 +170,8 @@ No reviewer account or credentials are required.
 - [ ] Support URL and Privacy Policy URL provided
 - [ ] Privacy nutrition label: no data collected or linked to user
 - [ ] TestFlight test complete: place all 4 node types, switch all 4 behaviors, switch all 8 palettes, save config, load preset, export PNG, export MP4
-- [ ] Verify PNG export on a physical device: saves to Photos with no node overlay; record actual pixel dimensions without assuming native-screen scaling
-- [ ] Verify MP4 export on a physical device: saves to Photos, approximately 10 seconds at 60fps, no node overlay; no seamless-loop or export-time target
+- [ ] Verify PNG export on a physical device: saves to Photos; record actual pixel dimensions without assuming native-screen scaling
+- [ ] Verify MP4 export on a physical device: saves to Photos, approximately 10 seconds at 60fps; no seamless-loop or export-time target
 - [ ] Verify finger review steps and Pencil input separately; use a compatible iPad and pressure-sensitive Pencil for pressure control
 - [ ] Test on an iPhone SE running iOS 17 or later for layout overflow in UI overlays
 - [ ] Submit for Review
