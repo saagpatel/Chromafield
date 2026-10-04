@@ -60,18 +60,22 @@ final class GestureCoordinator: NSObject, ObservableObject {
         twoFingerTap.cancelsTouchesInView = false
 
         // Triple tap — toggle pencil debug
+        #if DEBUG
         let tripleTap = UITapGestureRecognizer(target: self, action: #selector(handleTripleTap(_:)))
         tripleTap.numberOfTouchesRequired = 1
         tripleTap.numberOfTapsRequired = 3
         tripleTap.cancelsTouchesInView = false
 
         doubleTap.require(toFail: tripleTap)
+        #endif
 
         view.addGestureRecognizer(singleTap)
         view.addGestureRecognizer(doubleTap)
         view.addGestureRecognizer(longPress)
         view.addGestureRecognizer(twoFingerTap)
+        #if DEBUG
         view.addGestureRecognizer(tripleTap)
+        #endif
     }
 
     // MARK: - Gesture Handlers
@@ -113,10 +117,12 @@ final class GestureCoordinator: NSObject, ObservableObject {
         fieldManager.removeNearestNode(to: normalized, maxDistance: maxNormalizedDist)
     }
 
+    #if DEBUG
     @objc private func handleTripleTap(_ gesture: UITapGestureRecognizer) {
         guard gesture.state == .ended else { return }
         if let pencil = canvasView?.pencilHandler {
             pencil.isDebugOverlayVisible.toggle()
         }
     }
+    #endif
 }
