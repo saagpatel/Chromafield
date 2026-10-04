@@ -13,13 +13,13 @@ final class SimulationTests: XCTestCase {
         }
         let buffer = try ParticleBuffer(device: device, count: 1024)
         buffer.seedForAppStoreScreenshot(seed: 0x4348524F4D41)
-        let expected = Data(bytes: buffer.buffer.contents(), length: buffer.buffer.length)
+        let expected = Data(bytes: buffer.buffer.contents(), count: buffer.buffer.length)
 
         // Reseeding must replace every field, even after state has been modified.
         buffer.pointer[0].position = simd_float2(-1, -1)
         buffer.pointer[0].velocity = simd_float2(1, 1)
         buffer.seedForAppStoreScreenshot(seed: 0x4348524F4D41)
-        XCTAssertEqual(Data(bytes: buffer.buffer.contents(), length: buffer.buffer.length), expected)
+        XCTAssertEqual(Data(bytes: buffer.buffer.contents(), count: buffer.buffer.length), expected)
 
         for i in 0..<buffer.count {
             let particle = buffer.pointer[i]
@@ -33,7 +33,7 @@ final class SimulationTests: XCTestCase {
         }
 
         buffer.seedForAppStoreScreenshot(seed: 1)
-        XCTAssertNotEqual(Data(bytes: buffer.buffer.contents(), length: buffer.buffer.length), expected)
+        XCTAssertNotEqual(Data(bytes: buffer.buffer.contents(), count: buffer.buffer.length), expected)
     }
     #endif
 
