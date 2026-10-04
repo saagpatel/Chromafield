@@ -1,29 +1,28 @@
-Chromafield is a particle art instrument. Place field nodes on a canvas — attractors, repellers, vortices, chaos emitters — and watch thousands of particles respond in real time. Every placement is a brushstroke. Every configuration is a composition.
+Chromafield is a particle art instrument. Place Attract, Repel, Vortex, and Chaos nodes on a canvas, and thousands of particles pull toward, scatter from, and swirl around them. Start with a preset, change its colors and behavior, and make a composition of your own.
 
-Built on Metal, Chromafield runs up to 200,000 particles at 60fps. The physics are real: particles are pulled, pushed, spun, and scattered according to the forces you place. Apple Pencil pressure maps to field strength — a light touch creates gentle currents; full pressure warps the field.
+Particles leave trails that fade behind them as your forces move them.
 
 Four particle behaviors:
-• Flock — particles align into murmurations, streaming like starlings
-• Diffuse — particles drift with Brownian scatter, filling the canvas like ink in water
-• Crystal — particles lock into geometric lattices, snapping to invisible grids
-• Orbit — particles circle attractors in rings, forming solar system–like structures
+• Flock: nearby particles influence one another's motion
+• Diffuse: particles drift with added scatter
+• Crystal: slow particles move toward points on a grid
+• Orbit: attractors add a circling force
 
 Eight curated palettes:
-Ember, Glacial, Void, Toxic, Dusk, Ocean, Mono, Forge — each carefully tuned so fast particles glow brighter than slow ones, giving the field a sense of energy and depth.
+Ember, Glacial, Void, Toxic, Dusk, Ocean, Mono, and Forge. Particle colors vary with speed and age.
 
 Four field node types:
-• Attractor — pulls particles toward a point with configurable falloff
-• Repeller — pushes particles outward in a radial burst
-• Vortex — rotates particles in a circular current
-• Chaos — introduces turbulence, breaking ordered patterns apart
+• Attract: pulls particles toward a point
+• Repel: pushes particles away from a point
+• Vortex: applies a turning force
+• Chaos: adds turbulence
 
 Save, load, export:
-• Save field configurations and reload them later
+• Save your setups and reload them later
 • 6 bundled presets to explore: Nebula, Crystal Web, Solar Wind, Void Dance, Toxic Storm, Gold Rush
-• Export as a full-resolution PNG (2× screen resolution) to your photo library
-• Export as a 10-second MP4 loop at 60fps, rendered offline for maximum quality
-• Field nodes are never visible in exports — only the particle art
+• Export a PNG to your photo library
+• Export a 10-second MP4 at 60fps, rendered frame by frame rather than screen-recorded
 
-No accounts. No cloud. No ads. No subscriptions. Chromafield is entirely offline. Your saved configurations live in your app's local storage, nothing more.
+No accounts, ads, or subscriptions. Chromafield works offline and saves your setups in the app's local storage.
 
-Works with finger and Apple Pencil on iPhone and iPad.
+Place nodes with a finger on iPhone or iPad. On a compatible iPad, Apple Pencil places an Attract node and drags it across the canvas; with a pressure-sensitive Pencil, pressing harder makes it stronger.

@@ -34,3 +34,6 @@ Pods/
 .env
 .env.*
 !.env.example
+
+# distribution-kit lane receipts
+dist-receipts/

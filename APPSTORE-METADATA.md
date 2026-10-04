@@ -1,4 +1,4 @@
-# Chromafield — App Store Connect Metadata
+# Chromafield: App Store Connect Metadata
 
 ## Identity
 
@@ -14,58 +14,59 @@
 | **Price** | Free |
 | **Availability** | All territories |
 
+Store settings above are submission targets. Confirm them in App Store Connect before submission.
+
 ---
 
 ## Keywords
 
 ```
-generative art,particles,Metal,creative,art,drawing,animation,abstract,instrument,Apple Pencil
+generative art,particles,physics,flocking,creative,drawing,animation,abstract,visualizer,pencil
 ```
 
-*(100 character limit — these are 89 characters)*
+*(100 character limit; 95 characters)*
 
 ---
 
 ## Description
 
-Chromafield is a particle art instrument. Place field nodes on a canvas — attractors, repellers, vortices, chaos emitters — and watch thousands of particles respond in real time. Every placement is a brushstroke. Every configuration is a composition.
+Chromafield is a particle art instrument. Place Attract, Repel, Vortex, and Chaos nodes on a canvas, and thousands of particles pull toward, scatter from, and swirl around them. Start with a preset, change its colors and behavior, and make a composition of your own.
 
-Built on Metal, Chromafield runs up to 200,000 particles at 60fps. The physics are real: particles are pulled, pushed, spun, and scattered according to the forces you place. Apple Pencil pressure maps to field strength — a light touch creates gentle currents; full pressure warps the field.
+Particles leave trails that fade behind them as your forces move them.
 
 **Four particle behaviors:**
-• **Flock** — particles align into murmurations, streaming like starlings
-• **Diffuse** — particles drift with Brownian scatter, filling the canvas like ink in water
-• **Crystal** — particles lock into geometric lattices, snapping to invisible grids
-• **Orbit** — particles circle attractors in rings, forming solar system–like structures
+• **Flock:** nearby particles influence one another's motion
+• **Diffuse:** particles drift with added scatter
+• **Crystal:** slow particles move toward points on a grid
+• **Orbit:** attractors add a circling force
 
 **Eight curated palettes:**
-Ember, Glacial, Void, Toxic, Dusk, Ocean, Mono, Forge — each carefully tuned so fast particles glow brighter than slow ones, giving the field a sense of energy and depth.
+Ember, Glacial, Void, Toxic, Dusk, Ocean, Mono, and Forge. Particle colors vary with speed and age.
 
 **Four field node types:**
-• Attractor — pulls particles toward a point with configurable falloff
-• Repeller — pushes particles outward in a radial burst
-• Vortex — rotates particles in a circular current
-• Chaos — introduces turbulence, breaking ordered patterns apart
+• Attract: pulls particles toward a point
+• Repel: pushes particles away from a point
+• Vortex: applies a turning force
+• Chaos: adds turbulence
 
 **Save, load, export:**
-• Save field configurations and reload them later
+• Save your setups and reload them later
 • 6 bundled presets to explore: Nebula, Crystal Web, Solar Wind, Void Dance, Toxic Storm, Gold Rush
-• Export as a full-resolution PNG (2× screen resolution) to your photo library
-• Export as a 10-second MP4 loop at 60fps, rendered offline for maximum quality
-• Field nodes are never visible in exports — only the particle art
+• Export a PNG to your photo library
+• Export a 10-second MP4 at 60fps, rendered frame by frame rather than screen-recorded
 
-**No accounts. No cloud. No ads. No subscriptions.** Chromafield is entirely offline. Your saved configurations live in your app's local storage, nothing more.
+No accounts, ads, or subscriptions. Chromafield works offline and saves your setups in the app's local storage.
 
-Works with finger and Apple Pencil on iPhone and iPad.
+Place nodes with a finger on iPhone or iPad. On a compatible iPad, Apple Pencil places an Attract node and drags it across the canvas; with a pressure-sensitive Pencil, pressing harder makes it stronger.
 
 ---
 
 ## Promotional Text
 
-*(Optional — appears above description, can be updated without new app version)*
+*(Optional; appears above the description)*
 
 ```
-Place forces. Watch particles respond. Export the art. Metal-powered generative art instrument for iPhone and iPad.
+Drop Attract, Repel, and Vortex nodes on a canvas and watch thousands of particles bend around them. Save the result as a PNG or a 10-second MP4. iPhone and iPad.
 ```
 
 ---
@@ -85,56 +86,70 @@ https://github.com/saagpatel/Chromafield/blob/main/PRIVACY.md
 ## Screenshots
 
 ### Required Sizes
-- **13" iPad Display** — 2064 × 2752 px (portrait)
-- **6.9" iPhone Display** — 1320 × 2868 px (portrait)
+- **6.9-inch iPhone:** 1320x2868 px (portrait)
+- **13-inch iPad:** 2064x2752 px (portrait)
 
-These dimensions match Apple's current screenshot specification:
-https://developer.apple.com/help/app-store-connect/reference/app-information/screenshot-specifications/
+Both sizes are required for this submission. `project.yml` declares `TARGETED_DEVICE_FAMILY: "1,2"`.
 
 ### Screenshot Plan (4 screenshots per size)
 
-| # | Screen | Simulator State | Headline Overlay |
+| # | Screen | Capture State | Headline Overlay |
 |---|--------|-----------------|------------------|
-| 1 | Live canvas — Orbit behavior | Forge palette active; 1 central attractor + 4 radial repellers; 50K+ particles forming concentric ring orbits; trail accumulation on; visually stunning gold rings against black | "Place forces. Watch them orbit." |
-| 2 | Live canvas — Flock behavior | Ocean palette; 2 attractors; particles streaming in murmuration-like ribbons across the canvas; trails showing the path of the flock | "Thousands of particles. One field." |
-| 3 | Preset Gallery sheet | Grid of 6 bundled preset thumbnails (Nebula, Crystal Web, Solar Wind, Void Dance, Toxic Storm, Gold Rush) + 2–3 user-saved configs below; dark background | "Six presets. Infinite variations." |
-| 4 | Export Controls sheet | "Save Image" and "Record Loop" rows visible; a stunning Void palette crystallization config visible in the background canvas | "Export your art. 2× resolution PNG or 60fps MP4." |
+| 1 | Launch canvas | Nebula loaded; actual particles, HUD node count, and bottom toolbar visible | "Place forces. Watch particles respond." |
+| 2 | Behavior sheet | Tap "Behavior"; show the actual Flock, Diffuse, Crystal, and Orbit rows and selected checkmark | "Choose how particles move." |
+| 3 | Gallery sheet | Tap "Presets"; show the six named presets with their palette-gradient placeholders. Use a fresh install with "No saved configurations yet" in the Saved section; scroll if needed | "Start with one of six presets." |
+| 4 | Export sheet | Tap "Export"; show the actual "Save Image" and "Record Loop" rows with the build's captions | "Save a PNG or a 10-second MP4." |
 
 ### How to Take Screenshots
-1. Open Xcode → Simulator → select iPad Pro 13-inch (or iPhone 16 Pro Max for phone size)
-2. Build and run the Chromafield target
-3. Load a preset or place nodes manually to create a visually compelling state
-4. Let the simulation run for 15–30 seconds so trails build up
-5. **Xcode menu: Product → Simulator → Take Screenshot** (saves to Desktop)
-   OR: `xcrun simctl io booted screenshot ~/Desktop/screenshot.png`
-6. Repeat for iPhone 16 Pro Max (6.9") by switching simulator
-7. Add marketing text overlays in Sketch, Figma, or Canva before uploading
+1. Run the submission build on an iPhone and iPad, or matching simulators with Metal available.
+2. Capture the four states above in portrait. The gallery scrolls; show its actual visible content rather than combining screens into an invented layout.
+3. Confirm the phone captures are 1320x2868 and the iPad captures are 2064x2752 before uploading.
+4. Add the headline overlays without changing the app content. Use the captured particle field; do not invent rings, ribbons, preset previews, or particle counts.
 
-*Note: For the most compelling screenshots, use a physical iPad Pro with Apple Pencil — the particle density and rendering quality is significantly better than the simulator.*
+Simulator captures show that simulator's output. They do not establish physical-device performance or Apple Pencil input.
 
 ---
 
 ## App Review Notes
 
 ```
-Chromafield is a generative art tool. No login, no network requests, no special permissions required
-beyond Photo Library (requested only when the user first triggers an export — not at launch).
+Chromafield is a generative art tool. No login or network connection is required.
+It requests add-only Photo Library permission when an export is triggered, not at launch.
 
 To test the core flow:
-1. Launch app — full-screen dark canvas with default particle field
-2. Tap anywhere to place an attractor node — particles stream toward it
-3. Long-press to open the radial node menu — select Vortex
-4. Place a vortex node — particles rotate around it
-5. Tap the palette selector (bottom bar) to switch color palettes
-6. Tap "Behaviors" to switch between Flock, Diffuse, Crystal, Orbit
-7. Tap the export icon → "Save Image" to export a PNG (will request Photo Library permission)
+1. Launch the app. The canvas starts with the bundled Nebula configuration.
+2. Tap an open area of the canvas to add an Attract node.
+3. Long-press the canvas to open the radial menu, then tap "Vortex".
+   This adds the Vortex node at the long-press position. A normal tap adds an Attract node.
+   The other menu labels are "Attract", "Repel", and "Chaos".
+4. Tap "Palette" in the bottom toolbar, then tap a palette swatch.
+   Tap "Palette" again to close the selector.
+5. Tap "Behavior", then choose "Flock", "Diffuse", "Crystal", or "Orbit".
+   The sheet closes after selection.
+6. Tap "Save" to save the current configuration.
+   Save shows no confirmation; the entry appears under Saved in Gallery.
+   Tap "Presets" to open "Gallery".
+   Tap the saved configuration under "Saved" to load it and close the sheet.
+7. Tap "Export", then "Save Image". Allow adding to Photos when prompted.
+   A successful export shows "Exported" and "Saved to your photo library."
+8. Tap "OK" to dismiss the success alert, then tap "Record Loop" in the export sheet.
+   This exports a 10-second MP4 at 60fps.
+   It renders successive simulation frames; the clip is not a seamless loop.
+   PNG dimensions vary with the canvas size and device budget. The displayed
+   PNG multiplier does not mean a multiple of native screen pixels.
 
 To load a preset:
-1. Tap the gallery icon
-2. Select "Nebula" from the bundled presets — canvas reconfigures immediately
+1. Dismiss any open sheet, then tap "Presets".
+2. In "Gallery", tap "Nebula" under "Presets". The sheet closes and loads the configuration.
+   Bundled preset tiles use palette gradients, not rendered previews.
 
-Apple Pencil input maps pressure to field node strength, but all features work with finger input.
-No reviewer account, credentials, or network connectivity required.
+Finger input supports the steps above. Drawing to move an Attract node uses Apple Pencil
+on a compatible iPad. Pressure control needs a pressure-sensitive Pencil.
+A simulator cannot demonstrate Pencil pressure. Particle count and appearance depend
+on the device and running simulation.
+Metal is required. If unavailable, the app shows "Metal Unavailable" instead of a canvas.
+Review from any location: the app does not request or use location.
+No reviewer account or credentials are required.
 ```
 
 ---
@@ -145,7 +160,7 @@ No reviewer account, credentials, or network connectivity required.
 - [ ] App icon 1024×1024 appears correctly in Xcode asset catalog (no warnings)
 - [ ] `NSPhotoLibraryAddUsageDescription` in Info.plist: "Chromafield saves your particle art to your photo library."
 - [ ] No network entitlements declared in entitlements file
-- [x] `PrivacyInfo.xcprivacy` present — no data collected, no tracking, and no required-reason APIs used
+- [x] `PrivacyInfo.xcprivacy` present: declares no data collection or tracking; no required-reason API uses found in the source audit
 - [ ] Archive succeeds: `Product → Archive` with no errors
 - [ ] Validate App passes with 0 errors
 - [ ] All 8 screenshots uploaded (4 per required size: iPad 13" + iPhone 6.9")
@@ -155,9 +170,10 @@ No reviewer account, credentials, or network connectivity required.
 - [ ] Support URL and Privacy Policy URL provided
 - [ ] Privacy nutrition label: no data collected or linked to user
 - [ ] TestFlight test complete: place all 4 node types, switch all 4 behaviors, switch all 8 palettes, save config, load preset, export PNG, export MP4
-- [ ] Verify PNG export on physical device: < 3 seconds, 2× screen resolution, no node overlay visible
-- [ ] Verify MP4 export on physical device: < 30 seconds, 10-second loop, plays at 60fps in Photos
-- [ ] Test on iPhone SE (smallest supported screen) — no layout overflow in UI overlays
+- [ ] Verify PNG export on a physical device: saves to Photos; record actual pixel dimensions without assuming native-screen scaling
+- [ ] Verify MP4 export on a physical device: saves to Photos, approximately 10 seconds at 60fps; no seamless-loop or export-time target
+- [ ] Verify finger review steps and Pencil input separately; use a compatible iPad and pressure-sensitive Pencil for pressure control
+- [ ] Test on an iPhone SE running iOS 17 or later for layout overflow in UI overlays
 - [ ] Submit for Review
 
 ## Copyright

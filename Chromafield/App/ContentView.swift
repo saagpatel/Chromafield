@@ -56,6 +56,7 @@ struct ContentView: View {
                     }
 
                     // Pencil debug overlay
+                    #if DEBUG
                     if let debugInfo = pencil.debugInfo, pencil.isDebugOverlayVisible {
                         VStack(alignment: .leading, spacing: 4) {
                             Text("Force: \(debugInfo.rawForce, specifier: "%.2f")")
@@ -70,6 +71,7 @@ struct ContentView: View {
                         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomLeading)
                         .padding()
                     }
+                    #endif
 
                     // Quality toast
                     if showQualityToast {
